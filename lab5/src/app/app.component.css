@@ -1,0 +1,43 @@
+
+body{
+    background-color: navajowhite;
+}
+
+h1{
+    font-size:26px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color:gray;
+}
+
+label{
+    width: 240px;
+    font-size:18px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+
+/* image styling */
+img{
+    size: 300px;
+    height: 75px;
+    vertical-align:middle;
+}
+/* menu bar styling of the page */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:  rebeccapurple;
+}
+
+
+
+
+
