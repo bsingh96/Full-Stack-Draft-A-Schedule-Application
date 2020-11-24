@@ -3,37 +3,31 @@
     margin-top: 180px;
     background-color: lightgray;
     width: 600px;
-    height: 350px;
+    height: 370px;
     border-radius: 10px;
     text-align: center;
 }
 .title{
     color:Black;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
-}
-.login{
-background-color: rebeccapurple;
-margin-top:40px;
-margin-right: 25px;
-margin-left: 230px;
-color:white;
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bolder;
 }
 
 
 .newSignup{
     background-color: rebeccapurple;
     color:white;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    width: 300px;
 }
 
 
 
 input{
-    width: 185px;
-    margin: 0px 0px 5px;
-    padding: 4px 6px;
+    width: 300px;
+    height: 30px;
     align-content: center;
+    border-radius: 5px;
 }
 
 label{
