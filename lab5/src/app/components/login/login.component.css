@@ -1,0 +1,41 @@
+.container{
+    margin-left:600px;
+    margin-top: 70px;
+    background-color: lightgray;
+    width: 700px;
+    height: 300px;
+    border-radius: 10px;
+    text-align: center;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+.title{
+    color:Black;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+.login{
+background-color: rebeccapurple;
+margin-top:40px;
+margin-right: 25px;
+margin-left: 60px;
+color:white;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+
+.users{
+    background-color: rebeccapurple;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+}
+
+
+input{
+    width: 185px;
+    margin: 0px 0px 5px;
+    padding: 4px 6px;
+    align-content: center;
+}
+
+label{
+    width:240px;
+    display:inline-block;
+}
