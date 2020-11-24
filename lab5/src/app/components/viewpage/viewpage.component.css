@@ -1,6 +1,6 @@
 .container{
-    margin-left:600px;
-    margin-top: 70px;
+    margin-left:400px;
+    margin-top: 180px;
     background-color: lightgray;
     width: 700px;
     height: 300px;
@@ -9,7 +9,7 @@
 }
 .title{
     color:Black;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     
 }
 .login{
@@ -18,12 +18,12 @@ margin-top:40px;
 margin-right: 25px;
 margin-left: 60px;
 color:white;
-font-family: "Lucida Console", Monaco, monospace;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .users{
     background-color: rebeccapurple;
     color:white;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 

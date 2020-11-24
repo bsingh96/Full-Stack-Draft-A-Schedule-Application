@@ -1,14 +1,18 @@
 <div class="container">
+    <br>
+    <br>
     <h1 class="title">Login</h1>
-    <label>Login :</label>
-    <input name="login" id="login" autocomplete="off" >
     <br>
     <br>
-    <label>Password :</label>
-    <input name="pass" id="password" autocomplete="off" >
+  
+    <input name="login" id="login" autocomplete="off" placeholder="Email">
+    <br>
+    <br>
+    <input name="pass" id="password" autocomplete="off" placeholder="Password">
     <br>
     <br>
     <button mat-button class="login" >Login</button>
+    <button mat-button routerLink='/signup'class="signup" routerLinkActive = "active" >Sign Up</button>
 
 </div>
 <router-outlet></router-outlet>

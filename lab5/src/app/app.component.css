@@ -31,10 +31,10 @@ img{
 .home{
     text-align: right;
     margin-left:750px;
-    background-color: purple;
+    background-color:rgb(135, 75, 196);
 }
 
 .about{
-    background-color: purple;
+    background-color:rgb(135, 75, 196);
     margin-left:5px;
 }

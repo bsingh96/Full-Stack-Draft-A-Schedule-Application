@@ -8,12 +8,14 @@ import { ViewpageComponent } from './components/viewpage/viewpage.component';
 import { LoginComponent } from './components/login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ViewpageComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

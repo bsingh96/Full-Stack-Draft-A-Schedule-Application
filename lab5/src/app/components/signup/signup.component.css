@@ -15,21 +15,18 @@
 background-color: rebeccapurple;
 margin-top:40px;
 margin-right: 25px;
-margin-left: 10px;
+margin-left: 230px;
 color:white;
 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
 
-.signup{
-background-color: rebeccapurple;
-color:white;
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
-}
-.users{
+
+.newSignup{
     background-color: rebeccapurple;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
+
 
 
 input{
