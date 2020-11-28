@@ -268,20 +268,14 @@ table{
     background-color: lightblue;
 }
 
-.home{
+.browse{
     margin-top:2px;
     margin-bottom:2px;
     background-color:rgb(135, 75, 196);
     margin-left:5px;
     color:white;
 }
-.about{
-    margin-top:2px;
-    margin-bottom:2px;
-    background-color:rgb(135, 75, 196);
-    margin-left:5px;
-    color:white;
-}
+
 
 mat-toolbar{
     color: white;

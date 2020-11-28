@@ -137,6 +137,14 @@ if(subject == "all_subjects" && number == "" ){
     }
     }
     res.send(storage1);
+}else if (subject !="all_subjects" && number != "" && component == "all_components"){
+ for(a=0;a<data.length;a++){
+        if(subject==data[a].subject && number == data[a].catalog_nbr ){
+            storage1.push(data[a])
+            console.log(storage1);
+    }
+    }
+res.send(storage1);
 }else{
     res.status(400).send({
         error1: "Cannot Find Course"
