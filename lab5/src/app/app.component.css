@@ -12,6 +12,7 @@ mat-toolbar{
 .text2{
     margin-left: 6px;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: light;
 }
 /* image styling */
 img{
@@ -27,14 +28,3 @@ img{
 
 
 
-
-.home{
-    text-align: right;
-    margin-left:750px;
-    background-color:rgb(135, 75, 196);
-}
-
-.about{
-    background-color:rgb(135, 75, 196);
-    margin-left:5px;
-}

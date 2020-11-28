@@ -1,20 +1,30 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/viewpage' routerLinkActive = "active" class="home">Home</a>
+    <a mat-button routerLink ='/login' routerLinkActive = "active" class="login">Login</a>
+    <a mat-button routerLink ='/about' routerLinkActive = "active" class="about">About</a>
+  </mat-toolbar>
+
 <div class="container">
     <br>
     <br>
     <h1 class="title">Sign Up</h1>
     <br>
     <br>
-    <input  name="login" id="login" autocomplete="off" placeholder="Enter email">
+    <input  name="name" id="name" autocomplete="off" placeholder="Enter name">
     <br>
     <br>
-    <input name="pass" id="password" autocomplete="off" placeholder="Enter password">
+    <input  name="login" id="login-email" autocomplete="off" placeholder="Enter email">
     <br>
     <br>
-    <input name="pass" id="password" autocomplete="off" placeholder="Enter password again">
+    <input type="password" name="pass" id="password" autocomplete="off" placeholder="Enter password" >
+    <br>
+    <br>
+    <input type="password" name="pass" id="password2" autocomplete="off" placeholder="Enter password again" >
     <br>
     <br>
     <br>
-    <button mat-button class="newSignup">Sign Up</button>
+    <button mat-button class="newSignup" (click)= "sendCredentials()">Sign Up</button>
 
 </div>
 <router-outlet></router-outlet>

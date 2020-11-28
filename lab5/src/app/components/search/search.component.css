@@ -1,0 +1,290 @@
+/* page styling along with input boxes and labels */
+#div1{
+    margin-top:180px;
+    margin-left: 300px;
+    width: 900px;
+    height: 300px;
+    border: 3px  gray;
+    padding: 10px;
+    background-color: whitesmoke;
+
+}
+
+.table12{
+    margin-left: 100px;
+    background-color: lightgreen;
+}
+.table2{
+    border-color: black;
+}
+.tr12{
+    color: limegreen;
+}
+op1{
+    float: right;
+}
+#div2{
+    margin-left: 200px;
+   /* margin-top: auto;*/
+    
+}
+.deletebUTTON{
+    width: fit-content;
+    color: white;
+    background-color: rebeccapurple;
+    margin-left: 20px;
+}
+
+#div4{
+    align-content: center;
+    margin-left: 350px;
+
+}
+#page{
+    background-color: whitesmoke;
+
+}
+
+h1{
+    font-size:26px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label{
+    width: 240px;
+    font-size:18px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+
+button{
+    background-color: rgb(135, 75, 196);
+    margin-top:20px;
+    margin-left: 240px;
+    width: 200px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+input{
+    width: 185px;
+    margin: 0px 0px 5px;
+    padding: 4px 6px;
+    align-content: center;
+    border-radius: 5px;
+}
+
+select{
+    width: 200px;
+    margin: 0px 0px 5px;
+    padding: 4px 6px;
+    border-radius: 5px;
+}
+
+.text1{
+    color:gray;
+}
+
+/* image styling */
+img{
+    size: 300px;
+    height: 75px;
+    vertical-align:middle;
+}
+/* menu bar styling of the page */
+
+.newdiv11{
+    background-color:#f2f2f2;
+    color: black;
+    margin-top: 40px;
+    align-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    width: 900px;
+    margin-left:300px ;
+}
+.newdiv1{
+    background-color:lightsteelblue;
+    color: black;
+    margin-top: 40px;
+    align-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: normal;
+    font-size: 15px;
+    height: fit-content;
+
+}
+.divshow{
+    background-color:yellowgreen;
+}
+.newdiv12{
+    
+    background-color:lightgray;
+    color: black;
+    margin-top: 30px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    width: fit-content;
+    height: fit-content;
+    font-weight: normal;
+    font-size: 13px;
+}
+p{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: darkslategrey;
+    font-size: 17px;
+    font-weight: 600;
+}
+.newdiv13{
+    background-color:lightgray;
+    color: black;
+    margin-top: 30px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:black;
+    width: 800px;
+    height: 100px;
+    margin-right:400px;
+    font-weight: normal;
+    font-size: 13px;
+}
+.newdiv13{
+    background-color:lightgray;
+    color: black;
+    margin-top: 30px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:black;
+    margin-left: 350px;
+    font-weight: normal;
+    font-size: 15px;
+}
+table{
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 2;
+    width: 90%;
+    border: 1px solid black;
+    font-size: bold;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    td, th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 16px;
+    width: 200px;
+    background-color: whitesmoke;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:black;
+    }
+  .ok{
+      color:white;
+      background-color: rebeccapurple;
+  }
+  .lec{
+    color:black;
+    background-color: lightgreen;
+  }
+  .lec1{
+    color:black;
+    background-color:gray;
+    font-weight: bold;
+  }
+  .lab{
+      background-color: lightpink;
+  }
+  .tut{
+      background-color: lightblue;
+  }
+  .ok2{
+    color:black;
+    background-color:white;
+  }
+  .addButton{
+      width: 100px;
+      height: 50px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .removeButton{
+    width: 80px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightcyan;
+    color:black;
+  }
+
+.view{
+    margin-left: 10px;
+
+}
+.delete{
+    margin-left: 10px;
+}
+.names1{
+    margin-left:1px;
+}
+
+.label22{
+    margin-right: 0px;
+}
+.ok2{
+   margin-left: 3px;
+    background-color: lightsteelblue;
+}
+
+.LEC{
+    background-color: lightgreen;
+}
+
+.LAB{
+    background-color: lightpink;  
+}
+
+.TUT{
+    background-color: lightblue;
+}
+
+.home{
+    margin-top:2px;
+    margin-bottom:2px;
+    background-color:rgb(135, 75, 196);
+    margin-left:5px;
+    color:white;
+}
+.about{
+    margin-top:2px;
+    margin-bottom:2px;
+    background-color:rgb(135, 75, 196);
+    margin-left:5px;
+    color:white;
+}
+
+mat-toolbar{
+    color: white;
+    background-color: rebeccapurple;
+    height: 45px;
+}

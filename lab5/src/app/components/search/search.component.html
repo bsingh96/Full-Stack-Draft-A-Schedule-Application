@@ -1,0 +1,77 @@
+<mat-toolbar>
+    <a mat-button routerLink ='/viewpage' routerLinkActive = "active" class="home">Home</a>
+    <a mat-button routerLink ='/viewpage' routerLinkActive = "active" class="home">Course Reviews</a>
+    <a mat-button routerLink ='/viewpage' routerLinkActive = "active" class="home">Browse Schedules</a>
+    <a mat-button routerLink ='/about' routerLinkActive = "active" class="about">About</a>
+  </mat-toolbar>
+  
+
+<div id="div1" class="div11">
+    <div id="div2">
+        <br>
+        <br>
+        <br>
+   <form >
+       <label for= "courseID" id="text1">Subject:</label>
+       <select name="course" id="courseID1">
+           <option value="all_subjects" id="op1">All Subjects</option>
+       </select>
+       <br>
+       <br>
+       <label for= "courseNumber">Course Number:</label>
+       <input name = "courseNum" id="courseNumber" type="text" placeholder="eg. 1000A" maxlength="5" autocomplete="off">
+       <br>
+       <br>
+       <label for= "courseComp">Course Component:</label>
+       <select name="courseComponent" id="courseComp">
+           <option value="all_components">All </option>
+           <option value="LEC">Lecture </option>
+           <option value="TUT">Tutorial</option>
+           <option value="LAB">Laboratory </option>
+       </select>
+       <br>
+       <br>
+       <button mat-button type="button"  (click)="getSubjects()" id="submit23">Submit</button>
+   </form>
+  
+    </div>
+   
+</div>
+<div id="show13"></div>
+<div >
+    <div *ngFor="let course of storage" class ="newdiv1">
+        <!--<h3 >{{ course.subject }}</h3>-->             
+          <h1>{{ course.subject }} {{ course.catalog_nbr }} :- {{ course.className }} </h1>                    
+          <p class="ok2">Course Description: {{ course.catalog_description }}</p>      
+          <table class ="table12">
+              <tr class= "tr12">
+                <th>Component</th>
+                  <th>Section</th>
+                  <th>Class Number</th>
+                  <th>Days</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Campus</th>
+                  <th>Instructor</th>
+                  <th>Status</th>
+              </tr>
+              <tr>
+        
+                  <td class="{{ course.course_info[0].ssr_component }}">{{ course.course_info[0].ssr_component }}</td>
+                  <td>{{ course.course_info[0].class_section }}</td>
+                  <td>{{ course.course_info[0].class_nbr }}</td>
+                  <td>{{ course.course_info[0].days }}</td>
+                  <td>{{ course.course_info[0].start_time }}</td>
+                  <td>{{ course.course_info[0].end_time }}</td>
+                  <td>{{ course.course_info[0].campus }}</td>
+                  <td>{{ course.course_info[0].instructors }}</td>
+                  <td>{{ course.course_info[0].enrl_stat }}</td>
+              </tr>
+              
+          </table> 
+      
+      
+      </div>
+</div>
+
+<router-outlet></router-outlet>
