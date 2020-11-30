@@ -4,27 +4,33 @@
     <a mat-button routerLink ='/login' routerLinkActive = "active" class="login">Login</a>
     <a mat-button routerLink ='/about' routerLinkActive = "active" class="about">About</a>
   </mat-toolbar>
-
+<div class="error">
+<flash-messages ></flash-messages>
+</div>
 <div class="container">
     <br>
     <br>
     <h1 class="title">Sign Up</h1>
     <br>
     <br>
-    <input  name="name" id="name" autocomplete="off" placeholder="Enter name">
+    <input type="text" autocomplete="off" placeholder="Enter name" [(ngModel)]="name" name="name">
     <br>
     <br>
-    <input  name="login" id="login-email" autocomplete="off" placeholder="Enter email">
+    <input type="email"   autocomplete="off" placeholder="Enter email" [(ngModel)]="email" name="email">
     <br>
     <br>
-    <input type="password" name="pass" id="password" autocomplete="off" placeholder="Enter password" >
+    <input type="password" [(ngModel)]="password" name="password" i autocomplete="off" placeholder="Enter password" >
     <br>
     <br>
-    <input type="password" name="pass" id="password2" autocomplete="off" placeholder="Enter password again" >
+    <input type="password" name="password2"  [(ngModel)]="password2" autocomplete="off" placeholder="Enter password again" >
     <br>
     <br>
     <br>
     <button mat-button class="newSignup" (click)= "sendCredentials()">Sign Up</button>
+    <br>
+    <br>
+    <br>
+    <button mat-button class="authenticate" *ngIf="display" (click)="validateUser()">Authenticate</button>
 
 </div>
 <router-outlet></router-outlet>

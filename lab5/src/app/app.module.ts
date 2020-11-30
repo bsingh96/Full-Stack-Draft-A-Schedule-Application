@@ -12,7 +12,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AboutComponent } from './components/about/about.component';
 import {SearchComponent} from './components/search/search.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
-
+import { FormsModule } from '@angular/forms';
+import {VerifyService} from './services/verify.service'
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import {AuthorizeService} from './services/authorize.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +33,12 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
     MatToolbarModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    FlashMessagesModule.forRoot()
+   
   ],
-  providers: [],
+  providers: [ VerifyService, AuthorizeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

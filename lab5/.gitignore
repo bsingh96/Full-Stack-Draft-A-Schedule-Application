@@ -47,3 +47,4 @@ Thumbs.db
 #ignore json files
 Lab3-timetable-data.json
 database.json
+users_database.json

@@ -4,6 +4,10 @@ const app = express();
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('database.json');
 const db = low(adapter);
+// users database
+const adapter1= new FileSync('users_database.json');
+const db1 = low(adapter1);
+
 const joi = require('joi'); // input sanitization for joi
 const port = 3000;
 var subject_arr = [];
@@ -11,10 +15,18 @@ var cors = require('cors');
 app.use(cors());
 var data = require('./Lab3-timetable-data.json');
 var data_length = Object.keys(data).length;
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+var bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 // setup serving front-end code
 app.use('/', express.static('Public'));
 var storage1 =[]; // empty array declaration , this array stores the filtered search results
-
+db1.defaults({users: []}).write()
 // declare default in the database
 db.defaults({schedule: []}).write()
 app.use((req, res, next) => {
@@ -130,18 +142,19 @@ if(subject == "all_subjects" && number == "" ){
     }
     }
     res.send(storage1);
-}else if(subject !="all_subjects" && number == "" && component == "all_components"){
+}else if(subject !="all_subjects" && number == "" && component == "all_components"){ // search by subject and all components
     for(a=0;a<data.length;a++){
         if(subject==data[a].subject ){
             storage1.push(data[a])
     }
     }
     res.send(storage1);
-}else if (subject !="all_subjects" && number != "" && component == "all_components"){
+}else if (subject !="all_subjects" && number != "" && component == "all_components"){ 
+// search by subject and course code
  for(a=0;a<data.length;a++){
         if(subject==data[a].subject && number == data[a].catalog_nbr ){
             storage1.push(data[a])
-            console.log(storage1);
+           // console.log(storage1);
     }
     }
 res.send(storage1);
@@ -191,6 +204,61 @@ app.delete('/api/schedule/deleteAll',(req,res)=>{
 
 })
 // get details of a path
+
+var store =[];
+app.post('/api/public/register',  async (req,res)=>{
+//console.log(req.body);
+try{
+const salt = await bcrypt.genSalt();
+const hashed_password =  await bcrypt.hash(req.body.password,salt);
+console.log(salt);
+console.log(hashed_password);
+checkmail = req.body.email;
+console.log(checkmail)
+const user = {
+    name: req.body.name,
+    email: req.body.email,
+    password:hashed_password,
+    role: req.body.role,
+    status: req.body.status
+    
+}
+
+store = db1.get('users').find({ email:checkmail}).value();
+console.log(store);
+if(store == undefined || store.length == 0 || store ==null){
+    //console.log("hi")
+
+    db1.get('users').push(user).write();
+//console.log(user);
+res.status(201).send({message:"User added"});
+   
+}else{
+    res.send({
+        message: "Account Exists"
+    })
+
+}
+} catch{
+res.send({
+    message: "Something went wrong"
+})
+}
+})
+
+var x=[]
+app.put('/api/public/authenticate', (req,res)=>{
+    mail = req.body.email;
+    console.log(mail);
+    x= db1.get('users').find({email:mail}).assign({status: "active"}).write()
+    
+    res.send({message:"Sucessfully Activated"})
+    
+})
+
+app.post('/api/users' , (req,res)=>{
+console.log(req.body)
+})
 
 app.listen(port, () => console.log('Listening on port ${port}'));
 
