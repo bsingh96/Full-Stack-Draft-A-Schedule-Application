@@ -2,7 +2,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Component, OnInit } from '@angular/core';
 import{VerifyService} from '../../services/verify.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
-import {AuthorizeService} from '../../services/authorize.service'
+import {Router} from '@angular/router'
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,6 +20,7 @@ export class SignupComponent implements OnInit {
     private http : HttpClient , 
     private verifyService: VerifyService , 
     private flashMessages: FlashMessagesService,
+    private router : Router
     
 
     ) { 
@@ -39,11 +41,15 @@ export class SignupComponent implements OnInit {
   headers.append('Content-type','application/json');
   this.http.put<any>(this.url+'api/public/authenticate', mail, {headers:headers}).subscribe(data=>{
     if(data.message =="Sucessfully Activated"){
-      this.flashMessages.show("Sucessfully Activated!", {cssClass:'success', timeout:'5000'});
-      this.flashMessages.show("** Account Active , You May Login ** ", {cssClass:'success', timeout:'5000'});
+     // this.flashMessages.show("Sucessfully Activated!", {cssClass:'success', timeout:'5000'});
+     // this.flashMessages.show("** Account Active , You May Login ** ", {cssClass:'success', timeout:'5000'});
+     this.router.navigate(['/verify'])
     }else{
       this.flashMessages.show("Something Went Wrong , Try Again !", {cssClass:'success', timeout:'5000'});
     }
+
+
+
     
   })
 
@@ -76,7 +82,7 @@ export class SignupComponent implements OnInit {
     //return false;
   }
   // register user
-  
+  if(this.password2 == user.password && this.verifyService.validateSignup(user)&& this.verifyService.validateEmail(user.email)){
   let headers = new HttpHeaders();
   headers.append('Content-type','application/json');
   this.http.post<any>(this.url+'api/public/register', user, {headers:headers}).subscribe(data=>{
@@ -92,7 +98,7 @@ export class SignupComponent implements OnInit {
 
   }
 
-
+  }
   
 
 

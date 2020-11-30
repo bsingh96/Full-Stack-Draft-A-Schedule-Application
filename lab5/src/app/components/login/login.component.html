@@ -2,7 +2,9 @@
     <a mat-button routerLink ='/viewpage' routerLinkActive = "active" class="home">Home</a>
     <a mat-button routerLink ='/about' routerLinkActive = "active" class="about">About</a>
   </mat-toolbar>
-  
+<div class="error">
+<flash-messages ></flash-messages>
+</div>
 <div class="container">
     <br>
     <br>
@@ -10,15 +12,18 @@
     <br>
     <br>
   
-    <input name="login" id="login" autocomplete="off" placeholder="Email">
+    <input [(ngModel)]="email" name="email" id="login" autocomplete="off" placeholder="Email">
     <br>
     <br>
-    <input type = "password" name="pass" id="password" autocomplete="off" placeholder="Password">
+    <input  [(ngModel)]="password" type = "password" name="password" id="password" autocomplete="off" placeholder="Password">
     <br>
-    <button mat-button class="login" >Login</button>
+    <button mat-button class="login" (click)="login()">Login</button>
     <br>
     <br>
     <button mat-button routerLink='/signup'class="signup" routerLinkActive = "active" >Sign Up</button>
+    <br>
+    <br>
+    <button mat-button class="authenticate" *ngIf="display" (click)="validateUser()">Verify Email</button>
 
 </div>
 <router-outlet></router-outlet>

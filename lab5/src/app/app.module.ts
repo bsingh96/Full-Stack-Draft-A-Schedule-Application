@@ -15,7 +15,9 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { FormsModule } from '@angular/forms';
 import {VerifyService} from './services/verify.service'
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import {AuthorizeService} from './services/authorize.service'
+import {AuthorizeService} from './services/authorize.service';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { VerifyComponent } from './components/emailVerify/verify.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import {AuthorizeService} from './services/authorize.service'
     SignupComponent,
     AboutComponent,
     SearchComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    HomepageComponent,
+    VerifyComponent
     
   ],
   imports: [
