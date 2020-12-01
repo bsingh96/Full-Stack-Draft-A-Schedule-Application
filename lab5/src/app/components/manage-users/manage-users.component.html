@@ -3,7 +3,10 @@
     <a mat-button routerLink ='/adminhome' routerLinkActive = "active" class="homepage">Home</a>
     <a mat-button (click)="logout()" class="about">Logout</a>
   </mat-toolbar>
-  
+  <br>
+  <div class="success">
+    <flash-messages ></flash-messages>
+    </div>
 <div class="container">
     <br>
     <br>
@@ -17,5 +20,9 @@
    <br>
    <br>
    <button mat-button class="deactivate" (click)="deactivate()">Deactivate User</button>
+   <br>
+   <br>
+   <button mat-button class="deactivate" (click)="activate()">Activate User</button>
+
 </div>
 <router-outlet></router-outlet>

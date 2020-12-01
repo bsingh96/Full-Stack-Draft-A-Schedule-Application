@@ -42,3 +42,13 @@ mat-toolbar{
     width: 300px; 
    
 }
+.success{
+    margin-top: 5px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    background-color: green;
+    border-radius: 5px;
+
+}

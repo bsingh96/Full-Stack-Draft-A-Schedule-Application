@@ -7,6 +7,11 @@
     color:white;
 }
 
+h1{
+    color:Black;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bolder;
+}
 
 mat-toolbar{
     color: white;
@@ -20,8 +25,32 @@ mat-toolbar{
     margin-right: auto;
     margin-top: 180px;
     background-color: #f2f2f2;
-    width: 600px;
-    height: 420px;
+    width: 620px;
+    height: 460px;
     border-radius: 10px;
     text-align: center;
+}
+
+.create{
+    background-color: rebeccapurple;
+    margin-top:40px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    width: 300px;
+}
+
+.manage{
+    background-color: rebeccapurple;
+    margin-top:40px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    width: 300px;
+}
+
+.settings{
+    background-color: rebeccapurple;
+    margin-top:40px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    width: 300px;
 }

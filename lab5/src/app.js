@@ -319,7 +319,7 @@ if(find == undefined){
     })
 }else if(find != undefined){
     //res.status(201).send({message:"account found"})
-    if (find.status ="deactivated"){
+    if (find.status == "deactivated"){
         return res.send({message:"user deactivated"})
     }
 try{
@@ -376,6 +376,15 @@ res.send({message:"Sucessfully deactivated"})
 
 })
 
+
+app.put('/api/secure/activateuser', (req,res)=>{
+    email_activate = req.body.email;
+    console.log(email_activate);
+    x= db1.get('users').find({email:email_activate}).assign({status: "active"}).write()
+    
+    res.send({message:"Sucessfully activated"})
+    
+    })
 
 function authenticateToken(req,res,next){
 const bearer_header = req.headers['authorization']

@@ -7,13 +7,15 @@ import { Router} from '@angular/router'
 })
 export class HomepageComponent implements OnInit {
 ok:boolean=false;
+
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.ok=true;
     
+    this.ok=true;
+   
   }
   show(){
     var x =localStorage.getItem('Name');

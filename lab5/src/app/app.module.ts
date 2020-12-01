@@ -19,7 +19,8 @@ import {AuthorizeService} from './services/authorize.service';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { VerifyComponent } from './components/emailVerify/verify.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
-import { ManageUsersComponent } from './components/manage-users/manage-users.component'
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { SettingsComponent } from './components/settings/settings.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { ManageUsersComponent } from './components/manage-users/manage-users.com
     HomepageComponent,
     VerifyComponent,
     AdminHomeComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    SettingsComponent
     
   ],
   imports: [

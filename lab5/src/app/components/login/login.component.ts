@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
       }
   
   
-  
-      
     })
   
     }
@@ -62,8 +60,8 @@ export class LoginComponent implements OnInit {
     }
     if(this.verifyService.validateLogin(user) && this.verifyService.validateEmail(user.email)){
       let headers = new HttpHeaders();
-  headers.append('Content-type','application/json');
-  this.http.post<any>(this.url+'api/secure/login', user, {headers:headers}).subscribe(data=>{
+    headers.append('Content-type','application/json');
+    this.http.post<any>(this.url+'api/secure/login', user, {headers:headers}).subscribe(data=>{
    // alert(data.message);
 
     if(data.message == "access granted"){
@@ -79,7 +77,6 @@ export class LoginComponent implements OnInit {
       this.flashMessages.show(" Account not verified, Try Again !", {cssClass:'error', timeout:'5000'});
       this.display=true;
 
-      
     }else if(data.message == "Welcome Admin"){
       this.router.navigate(['/adminhome']);
       localStorage.setItem("Name", data.name);

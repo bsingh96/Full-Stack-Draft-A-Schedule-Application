@@ -8,7 +8,7 @@
 <div id="div1" class="div11">
     <div id="div2">
         <br>
-        <br>
+        <h1 class="title"> Browse Courses</h1>
         <br>
    <form >
        <label for= "courseID" id="text1">Subject:</label>
@@ -28,6 +28,9 @@
            <option value="TUT">Tutorial</option>
            <option value="LAB">Laboratory </option>
        </select>
+       <br>
+       <br>
+       <input class="keyword" mat-input placeholder="search by keyword....."><button mat-button class="go">Go</button>
        <br>
        <br>
        <button mat-button type="button"  (click)="getSubjects()" id="submit23">Submit</button>

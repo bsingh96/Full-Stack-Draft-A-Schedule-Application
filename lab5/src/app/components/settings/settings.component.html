@@ -1,0 +1,15 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/homepage' routerLinkActive = "active" class="homepage">Home</a>
+    <a mat-button (click)="logout()" class="about">Logout</a>
+  </mat-toolbar>
+  <br>
+  <div class="success">
+    <flash-messages ></flash-messages>
+    </div>
+<div class="container">
+<br>
+<h1>Account Settings</h1>
+
+</div>
+<router-outlet></router-outlet>
