@@ -17,7 +17,9 @@ import {VerifyService} from './services/verify.service'
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import {AuthorizeService} from './services/authorize.service';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { VerifyComponent } from './components/emailVerify/verify.component'
+import { VerifyComponent } from './components/emailVerify/verify.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { VerifyComponent } from './components/emailVerify/verify.component'
     SearchComponent,
     ReviewsComponent,
     HomepageComponent,
-    VerifyComponent
+    VerifyComponent,
+    AdminHomeComponent,
+    ManageUsersComponent
     
   ],
   imports: [

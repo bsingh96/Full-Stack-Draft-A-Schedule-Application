@@ -1,7 +1,8 @@
 /* page styling along with input boxes and labels */
 #div1{
     margin-top:180px;
-    margin-left: 300px;
+    margin-left: auto;
+    margin-right: auto;
     width: 900px;
     height: 300px;
     border: 3px  gray;
@@ -107,7 +108,8 @@ img{
     font-weight: normal;
     font-size: 15px;
     width: 900px;
-    margin-left:300px ;
+    margin-left:auto ;
+    margin-right: auto;
 }
 .newdiv1{
     background-color:lightsteelblue;

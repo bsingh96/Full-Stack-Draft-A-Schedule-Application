@@ -66,6 +66,7 @@ export class SignupComponent implements OnInit {
     role: "user",
     status: "inactive"
   }
+  //console.log(user.password)
 
   if(this.password2 != user.password){
     this.flashMessages.show("Passwords are not a match !", {cssClass:'error', timeout:'5000'});

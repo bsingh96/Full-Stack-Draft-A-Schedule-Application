@@ -26,6 +26,11 @@ var bodyParser = require('body-parser')
 
 require('dotenv').config();
 
+
+const access_token_secret ='d4a237f38b4104c40affd0d5c9139d7da8d5f11754faeeb129fa981fbf7fe6b8166b274c828b728fb0277895946423e715d8ea9e4f206d868c40ea4fd3c127b1';
+const refresh_token_secret='1af26c8f92dd007bd5b198b2f116b93948853dec93f879d4e2c161b43e9d81dc4631a818ea6aa56d6a39aa79e6509b069727b51ab1d04a04347d815c3920ab3c';
+
+const admin_access_token_secret ='e3e144166a8bb8271f9df78df180b959126c09d47f30ff540372f20510197e64ed01114524571e36a34844d186e3cc7f00f2b55bce04d9aafba51c12e66630b4';
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // setup serving front-end code
@@ -211,7 +216,7 @@ app.delete('/api/schedule/deleteAll',(req,res)=>{
 
 })
 // get details of a path
-
+// register a user
 var store =[];
 app.post('/api/public/register',  async (req,res)=>{
 //console.log(req.body);
@@ -264,6 +269,7 @@ app.put('/api/public/authenticate', (req,res)=>{
     
 })
 
+//login user
 app.post('/api/secure/login' , async (req,res)=>{
 //console.log(req.body)
 const useremail = req.body.email;
@@ -272,27 +278,61 @@ const user = {
     email: useremail,
     password: userpass
 }
+const admin_email = "admin3316@uwo.ca";
+const admin_pass = "se3316lab5";
 
+if(useremail == admin_email && userpass == admin_pass){
+const admin_user ={
+    name: "Admin",
+    email: useremail,
+    password:userpass
+}
 
+const access_token = jwt.sign({admin_user},admin_access_token_secret,{expiresIn: '15m'});
+       // console.log("access_token " + access_token);
+        const refresh_token = jwt.sign({admin_user},admin_access_token_secret);
+        //console.log("refresh_token" +refresh_token);
+        db2.get('tokens').push({adminRefreshToken:refresh_token}).write();
+
+        //console.log("access")
+
+    res.send({
+            name: admin_user.name,
+            access_token: access_token,
+            refreshToken_token : refresh_token,
+            message: "Welcome Admin"
+        })
+//res.send("welcome admin");
+}else if(user.email == admin_email && user.password !=admin_pass){
+    res.send({
+        message: "Incorrect Pasword for admin"
+    })
+}else{
+// normal user
 console.log(useremail);
 const find = db1.get('users').find({email:useremail}).value();
 console.log(find);
 //console.log(find.password);
 if(find == undefined){
-    res.status(400).send({
+    res.send({
         message: "Account does not exist"
     })
 }else if(find != undefined){
     //res.status(201).send({message:"account found"})
+    if (find.status ="deactivated"){
+        return res.send({message:"user deactivated"})
+    }
 try{
     const b= await bcrypt.compare(req.body.password, find.password);
     console.log(b)
+    
    if(await bcrypt.compare(req.body.password, find.password)) {
+     
        
        if(find.status != "inactive"){
-        const access_token = jwt.sign({user},process.env.access_token,{expiresIn: '15m'});
+        const access_token = jwt.sign({user},access_token_secret,{expiresIn: '15m'});
        // console.log("access_token " + access_token);
-        const refresh_token = jwt.sign({user},process.env.refresh_token);
+        const refresh_token = jwt.sign({user},refresh_token_secret);
         //console.log("refresh_token" +refresh_token);
         db2.get('tokens').push({refreshToken:refresh_token}).write();
 
@@ -313,74 +353,29 @@ try{
 } catch{
     res.send({message:"something went wrong"})
 }
-
+}
 }
 //res.send("ok")
 
 })
-app.post('/api/posts', authenticateToken,(req,res)=>{
-    
-    //res.send(db1.get('users').find({email:req.user.useremail}).value())
-    jwt.verify(req.token, process.env.access_token, (err,user) => {
-        if(err){
-            return res.sendStatus(403)
-        }else{
-            res.json({
-                user,
-                message: "welcome"
-            })
-        }
-    
-        //req.user = user;
-        //next();
-    })
-    })
 
+var users_list =[];
+app.get('/api/secure/allusers', (req,res)=>{
 
-app.post('/api/secure/userlogin', async (req,res)=>{
-     const email = req.body.email;
-     const password = req.body.password;
-    console.log(email + " " + password)
-
-    const adminEmail = "admin3316@uwo.ca";
-    const adminPassword = "se3316lab5";
-    if(email == adminEmail && password== adminPassword){
-        console.log('iwork')
-        let user ={
-            name: "Admininstrator",
-            email:email,
-            password: password
-        }
-
-        try{
-        console.log("admin")
-        const admin_access_token = makeToken(user);
-        console.log("from admin" + admin_token_refresh);
-        const admin_token_refresh = jwt.sign(user,process.env.refresh_token);
-       
-        db2.get('tokens').push({ adminRefreshToken:admin_token_refresh} ).write();
-        return res.send({
-            access_token: admin_access_token,
-            refresh_toke: admine_token_refresh,
-            name: user.name,
-            message: "Welcome Admin"
-        })
-        }catch{
-            res.send({
-                message: "Could not login"
-            })
-
-        }
-
-    }
+    users_list= db1.get('users').map('email').write()
+    res.send(users_list);
 })
-/*
-function makeToken(user){
-    console.log("enter")
-    return jwt.sign(user,process.env.access_token,{expiresIn: '1h'})
 
-    
-}*/
+
+app.put('/api/secure/deactivateuser', (req,res)=>{
+email_deactivate = req.body.email;
+console.log(email_deactivate);
+x= db1.get('users').find({email:email_deactivate}).assign({status: "deactivated"}).write()
+
+res.send({message:"Sucessfully deactivated"})
+
+})
+
 
 function authenticateToken(req,res,next){
 const bearer_header = req.headers['authorization']

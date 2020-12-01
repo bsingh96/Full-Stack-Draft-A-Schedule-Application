@@ -6,14 +6,19 @@ import { Router} from '@angular/router'
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+ok:boolean=false;
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.ok=true;
+    
   }
-
+  show(){
+    var x =localStorage.getItem('Name');
+    alert(x);
+  }
   logout(){
     localStorage.removeItem("RefreshToken");
     localStorage.removeItem("AccessToken");

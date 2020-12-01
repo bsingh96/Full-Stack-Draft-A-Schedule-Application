@@ -1,0 +1,21 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/adminhome' routerLinkActive = "active" class="homepage">Home</a>
+    <a mat-button (click)="logout()" class="about">Logout</a>
+  </mat-toolbar>
+  
+<div class="container">
+    <br>
+    <br>
+    <h1> Manage Users</h1>
+    <br>
+    <br>
+   
+   <select class="users" id="users">
+    
+   </select>
+   <br>
+   <br>
+   <button mat-button class="deactivate" (click)="deactivate()">Deactivate User</button>
+</div>
+<router-outlet></router-outlet>

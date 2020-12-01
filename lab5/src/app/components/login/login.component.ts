@@ -79,6 +79,18 @@ export class LoginComponent implements OnInit {
       this.flashMessages.show(" Account not verified, Try Again !", {cssClass:'error', timeout:'5000'});
       this.display=true;
 
+      
+    }else if(data.message == "Welcome Admin"){
+      this.router.navigate(['/adminhome']);
+      localStorage.setItem("Name", data.name);
+      localStorage.setItem("AccessToken",data.access_token);
+      localStorage.setItem("RefreshToken", data.refreshToken_token);
+    }else if(data.message == "Incorrect Pasword for admin"){
+      this.flashMessages.show("Incorrect Admin Password, Try Again !", {cssClass:'error', timeout:'5000'});
+    }else if(data.message == "Account does not exist"){
+      this.flashMessages.show("Account Does Not Exist With The Given Email, Try Again !", {cssClass:'error', timeout:'5000'});
+    }else if(data.message == "user deactivated"){
+      this.flashMessages.show("This Account Is Deactivated, Contact The Administrator !", {cssClass:'error', timeout:'5000'});
     }
     
   })

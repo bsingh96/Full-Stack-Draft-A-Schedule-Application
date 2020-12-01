@@ -25,3 +25,20 @@ mat-toolbar{
     border-radius: 10px;
     text-align: center;
 }
+
+.deactivate{
+    background-color: rebeccapurple;
+    margin-top:40px;
+    color:white;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    width: 300px; 
+}
+.title{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bolder;
+}
+
+.users{
+    width: 300px; 
+   
+}

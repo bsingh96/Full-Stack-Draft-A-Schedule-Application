@@ -8,6 +8,8 @@ import { SearchComponent} from './components/search/search.component'
 import {ReviewsComponent} from './components/reviews/reviews.component'
 import {HomepageComponent} from './components/homepage/homepage.component'
 import { VerifyComponent } from './components/emailVerify/verify.component'
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 const routes : Routes = [
   {path : 'viewpage' , component: ViewpageComponent},
   {path : 'login' , component: LoginComponent},
@@ -17,6 +19,8 @@ const routes : Routes = [
   {path: 'reviews', component:ReviewsComponent},
   {path: 'homepage', component:HomepageComponent},
   {path: 'verify', component:VerifyComponent},
+  {path:'adminhome', component:AdminHomeComponent},
+  {path:'manageusers', component:ManageUsersComponent},
   {path: '', redirectTo:'viewpage', pathMatch:'full'}
   
 ];
@@ -27,4 +31,6 @@ const routes : Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ViewpageComponent,LoginComponent,SignupComponent,AboutComponent,SearchComponent,ReviewsComponent, HomepageComponent,VerifyComponent]
+export const routingComponents = [ViewpageComponent,LoginComponent,SignupComponent,
+  AboutComponent,SearchComponent,ReviewsComponent, HomepageComponent,VerifyComponent,
+  AdminHomeComponent,ManageUsersComponent]

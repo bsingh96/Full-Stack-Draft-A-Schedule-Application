@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class SearchComponent implements OnInit {
 
-  mainUrl = ''
+  mainUrl = 'http://www.localhost:3000'
   storage: any[];
   constructor(private http: HttpClient){
     this.storage = [];
