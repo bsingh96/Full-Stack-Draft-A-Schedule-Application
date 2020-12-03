@@ -20,7 +20,10 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { VerifyComponent } from './components/emailVerify/verify.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
-import { SettingsComponent } from './components/settings/settings.component'
+import { SettingsComponent } from './components/settings/settings.component';
+import { CreateComponent } from './components/create/create.component';
+import { AddComponent } from './components/add/add.component'
+import {MatExpansionModule} from '@angular/material/expansion'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,9 @@ import { SettingsComponent } from './components/settings/settings.component'
     VerifyComponent,
     AdminHomeComponent,
     ManageUsersComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateComponent,
+    AddComponent
     
   ],
   imports: [
@@ -45,7 +50,8 @@ import { SettingsComponent } from './components/settings/settings.component'
     MatButtonModule,
     HttpClientModule,
     FormsModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    MatExpansionModule
    
   ],
   providers: [ VerifyService, AuthorizeService],

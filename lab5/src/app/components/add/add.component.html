@@ -1,0 +1,94 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/homepage' routerLinkActive = "active" class="homepage">Home</a>
+  </mat-toolbar>
+  <br>
+  <div class="error">
+    <flash-messages ></flash-messages>
+    </div>
+<div class="container">
+    
+       <form >
+           <br><br>
+           <label for= "courseID" id="text1">Subject:</label>
+           <select name="course" id="courseID">
+               <option value="all_subjects" id="op1">All Subjects</option>
+           </select>
+           <br>
+           <br>
+           <label for= "courseNumber">Course Number:</label>
+           <input name = "courseNumb" id="courseNumber" type="text" placeholder="eg. 1000A" maxlength="5">
+           <br>
+           <br>
+           <label for= "courseComp">Course Component:</label>
+           <select name="courseComponent" id="courseComp" >
+               <option value="all_components">All </option>
+               <option value="LEC">Lecture </option>
+               <option value="TUT">Tutorial</option>
+               <option value="LAB">Laboratory </option>
+           </select>
+           <br>
+           <br>
+           <label for= "Schedulenaming">Schedule:</label>
+           <select name="courseComponent" id="Schedulenaming">
+        </select>
+        <br><br>
+           <button mat-button type="button"  (click) ="showResults1()" id="submit23">Submit</button>
+        <br><br>
+       </form> 
+    </div>
+    <br><br>
+    <div id="show12"></div>
+
+   
+    <div class= "course" *ngFor="let course of courses" class="newdiv12">  
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-expansion-panel-title>
+            <h1>{{ course.subject }} {{ course.catalog_nbr }} </h1>
+            </mat-expansion-panel-title>
+        <mat-expansion-panel-description>
+              <h2>   {{   course.className }} </h2>
+        </mat-expansion-panel-description>
+        
+            </mat-expansion-panel-header>
+            <mat-action-row>
+            <p>Course Description: {{ course.catalog_description }}</p> 
+            <br>
+            <br>
+            <div>
+                <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Component</th>
+                    <th>Class Number</th>
+                    <th>Days</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Campus</th>
+                    <th>Instructor</th>
+                    <th>Status</th>
+                    <th>Save to Draft</th>
+                </tr>
+                <tr>
+                    <td>{{ course.course_info[0].class_section }}</td>
+                    <td class="{{ course.course_info[0].ssr_component }}">{{ course.course_info[0].ssr_component }}</td>
+                    <td>{{ course.course_info[0].class_nbr }}</td>
+                    <td>{{ course.course_info[0].days }}</td>
+                    <td>{{ course.course_info[0].start_time }}</td>
+                    <td>{{ course.course_info[0].end_time }}</td>
+                    <td>{{ course.course_info[0].campus }}</td>
+                    <td>{{ course.course_info[0].instructors }}</td>
+                    <td>{{ course.course_info[0].enrl_stat }}</td>
+                    <td><button mat-button class="addButton" (click)="addCourse(course.subject , course.catalog_nbr,course.className )">Add Course</button> </td>
+                </tr>
+                
+            </table> </div>
+            
+           
+            </mat-action-row>
+        
+            </mat-expansion-panel>              
+        
+    </div> 
+    <router-outlet></router-outlet>

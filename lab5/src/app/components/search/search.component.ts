@@ -7,11 +7,31 @@ import {HttpClient} from '@angular/common/http'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  keyword !: String;
   mainUrl = 'http://www.localhost:3000'
   storage: any[];
   constructor(private http: HttpClient){
     this.storage = [];
+  }
+
+  getKeyword(){
+    var div = document.getElementById("show13");
+    div?.innerHTML;
+   const info = this.keyword;
+
+    this.http.get<any>(this.mainUrl +'/api/courses/keywordmatch?Input='+info).subscribe(data =>{
+      if(data.length == null || data.length == undefined){
+        var header = document.createElement("H2");
+        div?.setAttribute("class","newdiv11");
+        var text = document.createTextNode("No Results Found !");
+        header.appendChild(text);
+        div?.appendChild(header);
+        return;
+      }else{
+        this.storage = data;
+      }
+    
+    })
   }
   getSubjects() : void {
     var div = document.getElementById("show13");

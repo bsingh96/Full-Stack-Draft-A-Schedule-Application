@@ -1,7 +1,6 @@
 
 <mat-toolbar>
     <a mat-button routerLink ='/adminhome' routerLinkActive = "active" class="homepage">Home</a>
-    <a mat-button (click)="logout()" class="about">Logout</a>
   </mat-toolbar>
   <br>
   <div class="success">
@@ -23,6 +22,8 @@
    <br>
    <br>
    <button mat-button class="deactivate" (click)="activate()">Activate User</button>
-
+   <br>
+   <br>
+   <button mat-button class="deactivate" (click)="activate()">Grant Admin Privilege</button>
 </div>
 <router-outlet></router-outlet>

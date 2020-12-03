@@ -24,8 +24,9 @@ const jwt = require('jsonwebtoken');
 
 var bodyParser = require('body-parser')
 
-require('dotenv').config();
 
+var stringSimilarity = require('string-similarity');
+const { object } = require('joi');
 
 const access_token_secret ='d4a237f38b4104c40affd0d5c9139d7da8d5f11754faeeb129fa981fbf7fe6b8166b274c828b728fb0277895946423e715d8ea9e4f206d868c40ea4fd3c127b1';
 const refresh_token_secret='1af26c8f92dd007bd5b198b2f116b93948853dec93f879d4e2c161b43e9d81dc4631a818ea6aa56d6a39aa79e6509b069727b51ab1d04a04347d815c3920ab3c';
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
 });
+/*
 app.put('/api/schedules',(req,res)=>{
     const schema = joi.object({
         ScheduleName: joi.string().max(18).required()
@@ -56,11 +58,31 @@ app.put('/api/schedules',(req,res)=>{
     }
 
     input = req.query.ScheduleName;
+    //description1 = req.query.ScheduleDescription;
     db.get('schedule').push({scheduleName: input, coursesInformation: []}).write()
     res.send({
         alert : "add"
     });
-});
+}); */
+// Modified api call to create schedule and verify if they already exist
+var verify =[]
+app.put('/api/createschedule',(req,res)=>{
+Schedulename= req.body.ScheduleName;
+Scheduledescription = req.body.ScheduleDescription;
+Creator = req.body.Name;
+verify = db.get('schedule').find({scheduleName:Schedulename}).value()
+if(verify == undefined || verify == null){
+db.get('schedule').push({Createdby:Creator,scheduleName:Schedulename, Description:Scheduledescription,visibility:"private",coursesInformation: [] }).write();
+
+res.send({
+    message: "add"
+})
+}else{
+    res.send({
+        message:"exists"
+    })
+}
+})
 
 var array3 =[];
 var array4 =[];
@@ -72,7 +94,7 @@ app.get('/api/schedule/find/schedule', (req,res)=>{
     })
     const validation =  schema.validate(req.query)
     if(validation.error){
-         res.status(400).send({alert: "Bad Input "})
+         res.send({alert: "Bad Input "})
      return;
     }
     
@@ -86,7 +108,7 @@ app.get('/api/schedule/find/schedule', (req,res)=>{
     }
   array4 = db.get('schedule['+index+'].coursesInformation').map().value();
   if(array4.length != 0){
-    res.status(200).send(array4);
+    res.send(array4);
   }else{
       res.send({
           alert: "No courses found."
@@ -269,7 +291,8 @@ app.put('/api/public/authenticate', (req,res)=>{
     
 })
 
-//login user
+//login user mechanism that checks if user is an admin or regular user
+// assigns jwt tokens based on user's role
 app.post('/api/secure/login' , async (req,res)=>{
 //console.log(req.body)
 const useremail = req.body.email;
@@ -359,6 +382,9 @@ try{
 
 })
 
+
+
+// method to get all  users by email 
 var users_list =[];
 app.get('/api/secure/allusers', (req,res)=>{
 
@@ -366,7 +392,7 @@ app.get('/api/secure/allusers', (req,res)=>{
     res.send(users_list);
 })
 
-
+// method to deactivate a user by email 
 app.put('/api/secure/deactivateuser', (req,res)=>{
 email_deactivate = req.body.email;
 console.log(email_deactivate);
@@ -376,7 +402,24 @@ res.send({message:"Sucessfully deactivated"})
 
 })
 
+//method to find a schedule made by the user
+var store_schedule =[];
+var storeall =[];
+app.put('/api/secure/savedschedules',(req,res)=>{
+storeall =[]
+username = req.body.Name;
+store_schedule= db.get('schedule').value()
 
+//console.log(username)
+for(i=0;i<store_schedule.length;i++){
+    if(store_schedule[i].Createdby == username){
+        storeall.push(store_schedule[i].scheduleName)
+    }
+}
+res.send(storeall)
+})
+
+// method to activate a user by email 
 app.put('/api/secure/activateuser', (req,res)=>{
     email_activate = req.body.email;
     console.log(email_activate);
@@ -385,6 +428,80 @@ app.put('/api/secure/activateuser', (req,res)=>{
     res.send({message:"Sucessfully activated"})
     
     })
+
+//method to check if the token exists in the database
+var store_tk = []
+app.get('/api/secure/tokens', (req,res)=>{
+token = req.body.RefreshToken
+store_tk = db2.get('tokens').find({refreshToken:token}).value();
+console.log(store_tk);
+if(store_tk == undefined || store_tk == null){
+    res.send({message:"not granted"})
+}else{
+    res.send({message:"granted"})
+}
+
+})
+
+//method to return keyword searched results
+
+var store =[]
+
+for(a=0;a<data.length;a++){
+    store.push(data[a].className);
+    store.push(String(data[a].catalog_nbr));
+}
+
+let result =[]
+app.get("/api/courses/keywordmatch",(req,res)=>{
+var match = removeMultiples(store);
+var userInput= req.query.Input;
+var user_final = userInput.toUpperCase();
+//console.log(user_final);
+let output = stringSimilarity.findBestMatch(user_final,match);
+console.log(output)
+var matches = output.ratings.filter(result => result.rating > 0.5);
+//console.log(matches)
+//console.log(data.length);
+for(a=0;a<matches.length;a++){
+    for(b=0;b<data.length;b++){
+        if(matches[a].target == String(data[b].catalog_nbr) || matches[a].target == data[b].className ){
+            //console.log("in");
+            result.push(data[b]);
+        }
+    }
+}
+
+return res.send(result);
+
+
+})
+// method to save a course under a specific schedule
+var store_1 =[]
+app.put('/api/schedule/save/course' , (req,res)=>{
+    
+     
+      schedulename = req.body.ScheduleName;
+      Subject = req.body.subject;
+      code1 = req.body.Code;
+      coursename = req.body.Name;
+      store_1 = db.get('schedule').map('scheduleName').value();
+      console.log(store_1.length);
+      console.log(schedulename);
+      for(a=0;a<store_1.length;a++){
+          if(store_1[a]==schedulename){
+  
+          db.get('schedule['+ a+'].coursesInformation').push({courseSubject:Subject,courseCode:code1,courseName:coursename}).write();
+          
+          return res.send({// good
+              alert : "Sucessfully Added."
+          })
+          }
+  
+  }
+})
+
+
 
 function authenticateToken(req,res,next){
 const bearer_header = req.headers['authorization']

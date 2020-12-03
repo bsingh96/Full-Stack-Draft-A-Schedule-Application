@@ -1,0 +1,23 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/homepage' routerLinkActive = "active" class="homepage">Home</a>
+  </mat-toolbar>
+  <br>
+  <div class="error">
+    <flash-messages ></flash-messages>
+    </div>
+<div class="container">
+    <br>
+    <br>
+    <h1> Create New Schedules</h1>
+    <br>
+    <br>
+    <label>Schedule Name</label>
+    <input [(ngModel)]="ScheduleName" name="ScheduleName" id="scheduleName" autocomplete="off" placeholder="Schedule Name....">
+    <br><br>
+    <label>Description</label>
+    <input [(ngModel)]="ScheduleDescription" name="ScheduleDescription" id="scheduleDescription" autocomplete="off" placeholder="(*Optional*) Enter Description Here......">
+    <br><br>
+    <button mat-button class="create" type="button" (click)=" addSchedule()" id="submitName">Add Schedule</button>
+</div>
+<router-outlet></router-outlet>

@@ -7,6 +7,11 @@
     color:white;
 }
 
+h1{
+    color:Black;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bolder;
+}
 
 mat-toolbar{
     color: white;
@@ -18,43 +23,52 @@ mat-toolbar{
     /*margin-left:400px;*/
     margin-left: auto;
     margin-right: auto;
-    margin-top: 180px;
+    margin-top: 100px;
     background-color: #f2f2f2;
-    width: 600px;
-    height: 480px;
+    width: 620px;
+    height: 460px;
     border-radius: 10px;
     text-align: center;
 }
 
-.deactivate{
+label{
+    width: 240px;
+    font-size:18px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+
+.create{
     background-color: rebeccapurple;
     margin-top:40px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    width: 300px; 
-}
-.title{
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-weight: bolder;
+    width: 300px;
+    margin-left: 240px;
 }
 
-.users{
-    width: 300px; 
-   
+#scheduleName{
+    width: 300px;
+    height: 20px;
 }
-
+#scheduleDescription{
+    width: 300px;
+    height: 40px;
+}
 h1{
+    color:rebeccapurple;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-weight: bolder;
-    color: rebeccapurple
+    text-align: center;
 }
-.success{
+.error{
     margin-top: 5px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-weight: bolder;
     text-align: center;
-    background-color: green;
+    background-color: rgb(214, 16, 16);
     border-radius: 5px;
-
 }

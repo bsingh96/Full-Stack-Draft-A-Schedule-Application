@@ -13,6 +13,8 @@ import { ManageUsersComponent } from './components/manage-users/manage-users.com
 import {SettingsComponent} from './components/settings/settings.component'
 import { AdminGuardGuard } from './admin-guard.guard';
 import { UserGuard } from './user.guard';
+import { CreateComponent } from './components/create/create.component';
+import {AddComponent} from './components/add/add.component'
 const routes : Routes = [
   {path: '', redirectTo:'viewpage', pathMatch:'full'},
   {path : 'viewpage' , component: ViewpageComponent},
@@ -21,10 +23,12 @@ const routes : Routes = [
   {path:'about', component:AboutComponent},
   {path:'browse', component:SearchComponent},
   {path: 'reviews', component:ReviewsComponent},
+  {path: 'add', component:AddComponent,canActivate:[UserGuard]},
   {path: 'homepage', component:HomepageComponent,canActivate:[UserGuard]},
   {path: 'verify', component:VerifyComponent},
   {path:'adminhome', component:AdminHomeComponent,canActivate:[AdminGuardGuard]},
   {path:'manageusers', component:ManageUsersComponent,canActivate:[AdminGuardGuard]},
+  {path:'create', component:CreateComponent,canActivate:[UserGuard]},
   {path:'settings', component:SettingsComponent,canActivate:[UserGuard]}
   
   
@@ -38,4 +42,4 @@ const routes : Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [ViewpageComponent,LoginComponent,SignupComponent,
   AboutComponent,SearchComponent,ReviewsComponent, HomepageComponent,VerifyComponent,
-  AdminHomeComponent,ManageUsersComponent,SettingsComponent]
+  AdminHomeComponent,ManageUsersComponent,SettingsComponent,CreateComponent]

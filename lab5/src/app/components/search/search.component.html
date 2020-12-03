@@ -30,17 +30,18 @@
        </select>
        <br>
        <br>
-       <input class="keyword" mat-input placeholder="search by keyword....."><button mat-button class="go">Go</button>
+       <input class="keyword" [(ngModel)]="keyword" name="keyword" autocomplete ="off" mat-input placeholder="search by keyword....."><button mat-button (click)="getKeyword()" class="go">Search</button>
        <br>
        <br>
        <button mat-button type="button"  (click)="getSubjects()" id="submit23">Submit</button>
    </form>
   
     </div>
+ 
    
 </div>
 <div id="show13"></div>
-<div >
+<div class ="store">
     <div *ngFor="let course of storage" class ="newdiv1">
         <!--<h3 >{{ course.subject }}</h3>-->             
           <h1>{{ course.subject }} {{ course.catalog_nbr }} :- {{ course.className }} </h1>                    
