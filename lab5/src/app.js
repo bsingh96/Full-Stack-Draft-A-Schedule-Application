@@ -225,15 +225,14 @@ app.get('/api/courses/catalog_nbr',(req,res) =>{
     res.send(catalog_arr);
 });
 
-// delete a specific schedule
-/*
+// delete a saved schedule for a user 
 app.delete('/api/schedule/savedCourse/delete',(req,res)=>{
     schedule = req.query.Schedulenaming;
     db.get('schedule').remove({scheduleName:schedule}).write()
     res.send({
     alert: "sucessfully deleted."
 })
-})*/
+})
 
 // method to delete a course under any schedule
 app.put('/api/schedule/delete/course' , (req,res)=>{
