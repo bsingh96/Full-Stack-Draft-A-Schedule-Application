@@ -16,6 +16,32 @@ mat-toolbar{
 }
 
 h1{
+    font-weight: bold;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-weight: bolder;
+    color:rebeccapurple;
+}
+
+label{
+    width: 240px;
+    font-size:18px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+.update{
+    margin-top:2px;
+    margin-bottom:2px;
+    background-color:rgb(135, 75, 196);
+    margin-left:auto;
+    margin-right:auto;
+    color:white;
+}
+
+.homepage{
+    margin-top:2px;
+    margin-bottom:2px;
+    background-color:rgb(135, 75, 196);
+    margin-left:5px;
+    color:white;
 }

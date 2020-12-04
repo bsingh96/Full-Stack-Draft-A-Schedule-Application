@@ -17,7 +17,15 @@
     <br><br>
     <label>Description</label>
     <input [(ngModel)]="ScheduleDescription" name="ScheduleDescription" id="scheduleDescription" autocomplete="off" placeholder="(*Optional*) Enter Description Here......">
-    <br><br>
+    <br>
     <button mat-button class="create" type="button" (click)=" addSchedule()" id="submitName">Add Schedule</button>
+    <br>
+    <br>
+    <label >Schedule</label>
+      <select name="courseComponent" id="Schedulenaming">
+      </select>
+    <button mat-button  class="create" (click)="work()"type="button"  >Make Public</button>
+
+    <button mat-button  class="create" (click)="work2()"type="button" >Make Private</button>
 </div>
 <router-outlet></router-outlet>

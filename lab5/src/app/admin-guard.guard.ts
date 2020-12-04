@@ -11,10 +11,10 @@ export class AdminGuardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     var x = localStorage.getItem("RefreshToken");
     var y = localStorage.getItem("Name")
-    if(x== null && y != "Admin"){
-      return false
-    }else{
+    if(x != null && y == "Admin"){
       return true
+    }else{
+      return false
     }
   
   }

@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("Name", data.name);
       localStorage.setItem("AccessToken",data.access_token);
       localStorage.setItem("RefreshToken", data.refreshToken_token);
+      localStorage.setItem("Email", data.email);
       
     }else if(data.message == "password incorrect"){
       this.flashMessages.show("Incorrect Password, Try Again !", {cssClass:'error', timeout:'5000'});

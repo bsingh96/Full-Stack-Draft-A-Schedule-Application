@@ -1,0 +1,27 @@
+{
+  "reviews": [
+    {
+      "User": "Ayyan",
+      "subject": "AMERICAN",
+      "code": "2310F",
+      "name": "AMERICAN NIGHTMARE",
+      "review": "this course was sooooo good! highly recommend !"
+    },
+    {
+      "User": "Ayyan",
+      "subject": "ACTURSCI",
+      "code": "1021B",
+      "name": "INTRO TO FINANCIAL SECURE SYS",
+      "review": "oaab"
+    },
+    {
+      "User": "Ayyan",
+      "subject": "AMERICAN",
+      "code": "2310F",
+      "name": "AMERICAN NIGHTMARE",
+      "review": "this course was sooooo good bro",
+      "visibility": "public",
+      "time": "Thu Dec 03 2020 22:32:42 GMT-0500 (Eastern Standard Time)"
+    }
+  ]
+}

@@ -6,15 +6,16 @@ import { Router} from '@angular/router'
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-ok:boolean=false;
 
+User !: String;
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
     
-    this.ok=true;
+    this.User=  String(localStorage.getItem("Name"));;
+
    
   }
   show(){
@@ -25,6 +26,7 @@ ok:boolean=false;
     localStorage.removeItem("RefreshToken");
     localStorage.removeItem("AccessToken");
     localStorage.removeItem("Name");
+    localStorage.removeItem("Email");
     this.router.navigate(['/viewpage'])
   }
 }

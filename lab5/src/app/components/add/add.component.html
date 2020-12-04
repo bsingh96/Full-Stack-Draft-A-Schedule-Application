@@ -42,6 +42,9 @@
 
    
     <div class= "course" *ngFor="let course of courses" class="newdiv12">  
+        <mat-accordion>
+
+     
         <mat-expansion-panel>
             <mat-expansion-panel-header>
             <mat-expansion-panel-title>
@@ -51,13 +54,12 @@
               <h2>   {{   course.className }} </h2>
         </mat-expansion-panel-description>
         
+           
             </mat-expansion-panel-header>
-            <mat-action-row>
             <p>Course Description: {{ course.catalog_description }}</p> 
+            <mat-action-row>
             <br>
-            <br>
-            <div>
-                <table>
+            <table>
                 <tr>
                     <th>Section</th>
                     <th>Component</th>
@@ -83,12 +85,29 @@
                     <td><button mat-button class="addButton" (click)="addCourse(course.subject , course.catalog_nbr,course.className )">Add Course</button> </td>
                 </tr>
                 
-            </table> </div>
+            </table> 
             
            
             </mat-action-row>
         
-            </mat-expansion-panel>              
+            </mat-expansion-panel>    
+            
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-expansion-panel-title>
+            <h3>Add Reviews </h3>
+            </mat-expansion-panel-title>
+    
+            </mat-expansion-panel-header>
+           
+            <mat-action-row>
+            
+                    <input class="input" placeholder="Enter a course review here.........." name="review" [(ngModel)]="review">
+                    <button (click)="addReview(course.subject , course.catalog_nbr,course.className)">Add Review</button>
+            
+            </mat-action-row>
         
+            </mat-expansion-panel>            
+        </mat-accordion>
     </div> 
     <router-outlet></router-outlet>

@@ -51,6 +51,7 @@ h1{
     font-size:26px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    color:rebeccapurple;
 }
 
 label{
@@ -154,9 +155,15 @@ img{
 }
 p{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: darkslategrey;
+    color: black;
     font-size: 17px;
-    font-weight: 600;
+
+    
+}
+h2{
+    color: black;
+    margin-left: 70px;
+    display: inline;;
 }
 .newdiv13{
     background-color:lightgray;
@@ -170,6 +177,23 @@ p{
     width: 800px;
     height: 100px;
     margin-right:400px;
+    font-weight: normal;
+    font-size: 13px;
+}
+.newdiv12{
+    
+    background-color:lightgray;
+    color: black;
+    margin-top: 30px;
+    align-content: center;
+    text-align: center;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:black;
+    margin-left:auto;
+    margin-right:auto;
+    width: 1280px;
+    height: fit-content;
     font-weight: normal;
     font-size: 13px;
 }
@@ -305,4 +329,21 @@ mat-toolbar{
 .title{
     text-align: center;
     color:rebeccapurple;
+}
+
+.newreview{
+   
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.show89{
+    border: solid rebeccapurple;
+    align-content: left;
+}
+h3{
+    float: left;
+    margin-left: 30px;
+    font-weight: bolder;
 }

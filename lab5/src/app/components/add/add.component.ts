@@ -15,11 +15,36 @@ export class AddComponent implements OnInit {
   ) { }
   
   courses!: any[];
-
+    review !: String;
   expand(){
     this.view = true;
   }
+  addReview(course_subject:String,button_id:String,coursename:String){
+  var time= Date();
+  //console.log(time);
+  var x = localStorage.getItem("Name")
+  if(this.review == undefined || this.review == null ){
+  alert("Input a review !")
+  }else{
+  const info ={
+    Subject : course_subject,
+    Code : button_id,
+    Name: coursename,
+    Username: x,
+    Review: this.review,
+    Visibility: "public",
+    Time: time
+  }
+  this.http.put<any>(this.mainUrl + '/api/courses/addreview', info).subscribe(data =>{
+  if(data.message=="successfully added"){
+  alert("review added!")
+  }
+  })
+}
 
+
+ //alert(course_subject + " "+ button_id + " " + coursename + " " + x )
+  }
   addCourse(course_subject:String,button_id:String,coursename:String){
     var buttonid= button_id;
     var schedule = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
@@ -87,7 +112,7 @@ export class AddComponent implements OnInit {
           var newOptions = document.createElement('option');
         //  newOptions.setAttribute("value",result[i].scheduleName);
         console.log(user);
-          var optionTexts = document.createTextNode(data[i]);
+          var optionTexts = document.createTextNode(data[i].scheduleName);
           newOptions.appendChild(optionTexts);
           select?.appendChild(newOptions);
           console.log(newOptions)

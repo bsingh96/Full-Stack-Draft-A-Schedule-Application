@@ -41,40 +41,104 @@
    
 </div>
 <div id="show13"></div>
-<div class ="store">
-    <div *ngFor="let course of storage" class ="newdiv1">
-        <!--<h3 >{{ course.subject }}</h3>-->             
-          <h1>{{ course.subject }} {{ course.catalog_nbr }} :- {{ course.className }} </h1>                    
-          <p class="ok2">Course Description: {{ course.catalog_description }}</p>      
-          <table class ="table12">
-              <tr class= "tr12">
-                <th>Component</th>
-                  <th>Section</th>
-                  <th>Class Number</th>
-                  <th>Days</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
-                  <th>Campus</th>
-                  <th>Instructor</th>
-                  <th>Status</th>
-              </tr>
-              <tr>
+
+    <div *ngFor="let course of storage" class ="newdiv12">
+        <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-expansion-panel-title>
+            <h1>{{ course.subject }} {{ course.catalog_nbr }} </h1>
+            </mat-expansion-panel-title>
+        <mat-expansion-panel-description>
+              <h2>   {{   course.className }} </h2>
+        </mat-expansion-panel-description>
         
-                  <td class="{{ course.course_info[0].ssr_component }}">{{ course.course_info[0].ssr_component }}</td>
-                  <td>{{ course.course_info[0].class_section }}</td>
-                  <td>{{ course.course_info[0].class_nbr }}</td>
-                  <td>{{ course.course_info[0].days }}</td>
-                  <td>{{ course.course_info[0].start_time }}</td>
-                  <td>{{ course.course_info[0].end_time }}</td>
-                  <td>{{ course.course_info[0].campus }}</td>
-                  <td>{{ course.course_info[0].instructors }}</td>
-                  <td>{{ course.course_info[0].enrl_stat }}</td>
-              </tr>
-              
-          </table> 
-      
+            </mat-expansion-panel-header>
+           
+            <p>Course Description: {{ course.catalog_description }}</p> 
+            <mat-action-row>
+                
+            
+            <br>
+            <br>
+            
+            <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Component</th>
+                    <th>Class Number</th>
+                    <th>Days</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Campus</th>
+                    <th>Instructor</th>
+                    <th>Status</th>
+
+                </tr>
+                <tr>
+                    <td>{{ course.course_info[0].class_section }}</td>
+                    <td class="{{ course.course_info[0].ssr_component }}">{{ course.course_info[0].ssr_component }}</td>
+                    <td>{{ course.course_info[0].class_nbr }}</td>
+                    <td>{{ course.course_info[0].days }}</td>
+                    <td>{{ course.course_info[0].start_time }}</td>
+                    <td>{{ course.course_info[0].end_time }}</td>
+                    <td>{{ course.course_info[0].campus }}</td>
+                    <td>{{ course.course_info[0].instructors }}</td>
+                    <td>{{ course.course_info[0].enrl_stat }}</td>
+                    
+                </tr>
+                
+            </table> 
+            
+           
+            </mat-action-row>
+        
+            </mat-expansion-panel>    
+         
+            
+        <mat-expansion-panel (click)="loadReviews(course.subject , course.catalog_nbr,course.className)">
+            <mat-expansion-panel-header>
+            <mat-expansion-panel-title>
+            View Reviews 
+            </mat-expansion-panel-title>
+    
+            </mat-expansion-panel-header>
+           
+            <mat-action-row class="newreview">
+            <div *ngFor="let reviews of reviews" >
+                <div class="show89">
+                <br>
+                <h3>Added by: </h3><p> {{reviews.User}} </p>
+                <br>
+                <h3>Review: </h3><p>{{reviews.review}}</p>
+                <br>
+                <h3>Time Modified by: </h3><p>{{reviews.time}}</p>
+                <br>
+                </div>
+            <!--
+                <table>
+                    <tr>
+                        <th>User</th>
+                        <th>Review</th>
+                        <th>Time Modified</th>
+    
+                    </tr>
+                    <tr>
+                        <td>{{ reviews.User }}</td>
+                        <td >{{ reviews.review}}</td>
+                        <td >{{ reviews.time}}</td>
+                    </tr>
+                    
+                </table> -->
+            </div>
+                    
+            
+            </mat-action-row>
+        
+            </mat-expansion-panel>            
+        </mat-accordion>
       
       </div>
-</div>
+
 
 <router-outlet></router-outlet>

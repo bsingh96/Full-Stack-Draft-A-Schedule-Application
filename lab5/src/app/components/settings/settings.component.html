@@ -1,7 +1,7 @@
 
 <mat-toolbar>
     <a mat-button routerLink ='/homepage' routerLinkActive = "active" class="homepage">Home</a>
-    <a mat-button (click)="logout()" class="about">Logout</a>
+ 
   </mat-toolbar>
   <br>
   <div class="success">
@@ -9,7 +9,20 @@
     </div>
 <div class="container">
 <br>
-<h1>Account Settings</h1>
 
+<h1>Account Settings</h1>
+<br>
+<h1>{{ok}}</h1>
+
+
+<label>Email</label>
+<label>{{Email}}</label>
+<br>
+<br>
+<label>Enter New Password</label>
+<input type="password" [(ngModel)]="password" name="password">
+<br>
+<br>
+<button mat-button class="update" (click)="updatePassword()"> Update Password</button>
 </div>
 <router-outlet></router-outlet>

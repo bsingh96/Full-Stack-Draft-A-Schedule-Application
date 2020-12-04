@@ -183,6 +183,10 @@ img{
     height: 300px;
 
 }
+.input{
+    width: 200px;
+    height: 40px;
+}
 .newdiv12{
     
     background-color:lightgray;
@@ -195,7 +199,7 @@ img{
     color:black;
     margin-left:auto;
     margin-right:auto;
-    width: 1800px;
+    width: 1280px;
     height: fit-content;
     font-weight: normal;
     font-size: 13px;
@@ -376,11 +380,6 @@ td,th{
         font-size: 15px;
         width: 900px;
         margin-left:auto ;
-        margin-right:auto;
-    }
-
-    p{
-        margin-left:auto;
         margin-right:auto;
     }
 

@@ -24,6 +24,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { CreateComponent } from './components/create/create.component';
 import { AddComponent } from './components/add/add.component'
 import {MatExpansionModule} from '@angular/material/expansion'
+import {HashLocationStrategy , LocationStrategy} from '@angular/common'
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,7 @@ import {MatExpansionModule} from '@angular/material/expansion'
     MatExpansionModule
    
   ],
-  providers: [ VerifyService, AuthorizeService],
+  providers: [ VerifyService, AuthorizeService, {provide:LocationStrategy,useClass:HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

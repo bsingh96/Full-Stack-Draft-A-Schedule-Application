@@ -11,6 +11,9 @@ const db1 = low(adapter1);
 const adapter2 = new FileSync('user_tokens.json');
 const db2 = low(adapter2);
 
+const adapter3 = new FileSync('reviews.json');
+const reviewsdb = low(adapter3);
+
 const joi = require('joi'); // input sanitization for joi
 const port = 3000;
 var subject_arr = [];
@@ -38,7 +41,7 @@ app.use(bodyParser.json());
 app.use('/', express.static('Public'));
 var storage1 =[]; // empty array declaration , this array stores the filtered search results
 db1.defaults({users: []}).write()
-
+reviewsdb.defaults({reviews:[]}).write()
 db2.defaults({tokens:[]}).write()
 // declare default in the database
 db.defaults({schedule: []}).write()
@@ -193,8 +196,8 @@ if(subject == "all_subjects" && number == "" ){
     }
 res.send(storage1);
 }else{
-    res.status(400).send({
-        error1: "Cannot Find Course"
+    res.send({
+        error: "Cannot Find Course"
     })
     }
 });
@@ -266,7 +269,7 @@ if(store == undefined || store.length == 0 || store ==null){ // continue to add 
 
     db1.get('users').push(user).write(); // store users model into the database
 //console.log(user);
-res.status(201).send({message:"User added"});
+res.send({message:"User added"});
    
 }else{ // if the store array is not empty, email exists and send a message saying that the account already exists
     res.send({
@@ -290,6 +293,18 @@ app.put('/api/public/authenticate', (req,res)=>{
     res.send({message:"Sucessfully Activated"})
     
 })
+//update password 
+app.post('/api/secure/updatepassword', async(req,res)=>{
+user_pass = req.body.Password;
+mail = req.body.Email;
+const salt = await bcrypt.genSalt();
+const Newpass =  await bcrypt.hash(user_pass,salt);
+
+x= db1.get('users').find({email:mail}).assign({password:Newpass}).write()
+
+res.send({message:"Password changed"})
+})
+
 
 //login user mechanism that checks if user is an admin or regular user
 // assigns jwt tokens based on user's role
@@ -365,6 +380,7 @@ try{
             name: find.name,
             access_token: access_token,
             refreshToken_token : refresh_token,
+            email: find.email,
             message: "access granted"
         })
        }else{
@@ -413,7 +429,7 @@ store_schedule= db.get('schedule').value()
 //console.log(username)
 for(i=0;i<store_schedule.length;i++){
     if(store_schedule[i].Createdby == username){
-        storeall.push(store_schedule[i].scheduleName)
+        storeall.push(store_schedule[i])
     }
 }
 res.send(storeall)
@@ -431,11 +447,12 @@ app.put('/api/secure/activateuser', (req,res)=>{
 
 //method to check if the token exists in the database
 var store_tk = []
-app.get('/api/secure/tokens', (req,res)=>{
+app.put('/api/secure/tokens', (req,res)=>{
 token = req.body.RefreshToken
 store_tk = db2.get('tokens').find({refreshToken:token}).value();
 console.log(store_tk);
 if(store_tk == undefined || store_tk == null){
+    console.log("in")
     res.send({message:"not granted"})
 }else{
     res.send({message:"granted"})
@@ -476,6 +493,25 @@ return res.send(result);
 
 
 })
+// make a schedule public
+app.put('/api/schedule/makepublic',(req,res)=>{
+schedule = req.body.scheduleName;
+
+console.log(schedule);
+x= db.get('schedule').find({scheduleName:schedule}).assign({visibility: "public"}).write()
+
+res.send({message:"made public"})
+})
+
+// make a schedule private
+app.put('/api/schedule/makeprivate',(req,res)=>{
+    schedule = req.body.scheduleName;
+    
+    console.log(schedule);
+    x= db.get('schedule').find({scheduleName:schedule}).assign({visibility: "private"}).write()
+    
+    res.send({message:"made private"})
+    })
 // method to save a course under a specific schedule
 var store_1 =[]
 app.put('/api/schedule/save/course' , (req,res)=>{
@@ -500,7 +536,39 @@ app.put('/api/schedule/save/course' , (req,res)=>{
   
   }
 })
+// add course reviews 
+app.put('/api/courses/addreview',(req,res)=>{
+    const info ={
+        User: req.body.Username,
+        subject: req.body.Subject,
+        code: req.body.Code,
+        name: req.body.Name,
+        review: req.body.Review,
+        visibility: req.body.Visibility,
+        time: req.body.Time
 
+      }
+    reviewsdb.get('reviews').push(info).write();
+
+    res.send({message:"successfully added"});
+})
+
+// get course reviews
+
+app.put("/api/courses/reviews",(req,res)=>{
+coursename = req.body.CourseName;
+storeall =[]
+
+store_schedule= reviewsdb.get('reviews').value()
+
+//console.log(username)
+for(i=0;i<store_schedule.length;i++){
+    if(store_schedule[i].name == coursename){
+        storeall.push(store_schedule[i])
+    }
+}
+res.send(storeall)
+})
 
 
 function authenticateToken(req,res,next){
@@ -516,6 +584,8 @@ next();
 }
 
 }
+
+
 
 
 app.listen(port, () => console.log('Listening on port ${port}'));
