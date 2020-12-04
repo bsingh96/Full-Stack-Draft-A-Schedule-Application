@@ -15,6 +15,9 @@ import { AdminGuardGuard } from './admin-guard.guard';
 import { UserGuard } from './user.guard';
 import { CreateComponent } from './components/create/create.component';
 import {AddComponent} from './components/add/add.component'
+import {ViewComponent} from './components/view/view.component'
+import {DialogComponent} from './components/dialog/dialog.component'
+
 const routes : Routes = [
   {path: '', redirectTo:'viewpage', pathMatch:'full'},
   {path : 'viewpage' , component: ViewpageComponent},
@@ -23,7 +26,9 @@ const routes : Routes = [
   {path:'about', component:AboutComponent},
   {path:'browse', component:SearchComponent},
   {path: 'reviews', component:ReviewsComponent},
+  {path: 'view', component:ViewComponent,canActivate:[UserGuard]},
   {path: 'add', component:AddComponent,canActivate:[UserGuard]},
+ 
   {path: 'homepage', component:HomepageComponent,canActivate:[UserGuard]},
   {path: 'verify', component:VerifyComponent},
   {path:'adminhome', component:AdminHomeComponent,canActivate:[AdminGuardGuard]},
@@ -42,4 +47,4 @@ const routes : Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [ViewpageComponent,LoginComponent,SignupComponent,
   AboutComponent,SearchComponent,ReviewsComponent, HomepageComponent,VerifyComponent,
-  AdminHomeComponent,ManageUsersComponent,SettingsComponent,CreateComponent]
+  AdminHomeComponent,ManageUsersComponent,SettingsComponent,CreateComponent,ViewComponent]

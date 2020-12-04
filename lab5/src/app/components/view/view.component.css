@@ -26,7 +26,7 @@ mat-toolbar{
     margin-top: 140px;
     background-color: #f2f2f2;
     width: 620px;
-    height: 520px;
+    height: 280px;
     border-radius: 10px;
     text-align: center;
 }
@@ -51,13 +51,69 @@ mat-toolbar{
     margin-top:40px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    width: 300px;
+    width: 180px;
 }
-
-.settings{
+.delete{
     background-color: rebeccapurple;
     margin-top:40px;
     color:white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    width: 300px;
+    width: 150px;
+    margin-left: 35px;
 }
+
+
+
+label{
+    width: 240px;
+    font-size:18px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+
+select{
+    width: 308px;
+    height: 30px;
+}
+
+table{
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 2;
+    width: 90%;
+    border: 1px solid black;
+    font-size: bold;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    td, th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 16px;
+    width: 200px;
+    background-color: whitesmoke;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:black;
+    }
+
+    .newdiv12{
+    
+        background-color:lightgray;
+        color: black;
+        margin-top: 30px;
+        align-content: center;
+        text-align: center;
+        border-radius: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        color:black;
+        margin-left:auto;
+        margin-right:auto;
+        width: 1280px;
+        height: fit-content;
+        font-weight: normal;
+        font-size: 13px;
+    }

@@ -24,7 +24,11 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { CreateComponent } from './components/create/create.component';
 import { AddComponent } from './components/add/add.component'
 import {MatExpansionModule} from '@angular/material/expansion'
-import {HashLocationStrategy , LocationStrategy} from '@angular/common'
+import {HashLocationStrategy , LocationStrategy} from '@angular/common';
+import { ViewComponent } from './components/view/view.component'
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,9 @@ import {HashLocationStrategy , LocationStrategy} from '@angular/common'
     ManageUsersComponent,
     SettingsComponent,
     CreateComponent,
-    AddComponent
+    AddComponent,
+    DialogComponent,
+    ViewComponent
     
   ],
   imports: [
@@ -52,10 +58,12 @@ import {HashLocationStrategy , LocationStrategy} from '@angular/common'
     HttpClientModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
    
   ],
   providers: [ VerifyService, AuthorizeService, {provide:LocationStrategy,useClass:HashLocationStrategy }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[DialogComponent]
 })
 export class AppModule { }

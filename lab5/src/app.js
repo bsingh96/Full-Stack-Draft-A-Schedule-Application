@@ -435,6 +435,26 @@ for(i=0;i<store_schedule.length;i++){
 res.send(storeall)
 })
 
+//method to get schedule based on username and schedule name
+var store_schedule1 =[];
+var storeall1 =[];
+app.put('/api/secure/loadschedule',(req,res)=>{
+storeall1 =[]
+username1 = req.body.Name;
+schedulename1 = req.body.ScheduleName
+store_schedule1= db.get('schedule').value()
+
+
+console.log(username1)
+console.log(store_schedule1.length)
+for(i=0;i<store_schedule1.length;i++){
+    if(store_schedule1[i].scheduleName==schedulename1 && store_schedule1[i].Createdby ==username1){
+        storeall1.push(store_schedule1[i])
+    }
+}
+res.send(storeall1)
+})
+
 // method to activate a user by email 
 app.put('/api/secure/activateuser', (req,res)=>{
     email_activate = req.body.email;
@@ -444,6 +464,7 @@ app.put('/api/secure/activateuser', (req,res)=>{
     res.send({message:"Sucessfully activated"})
     
     })
+
 
 //method to check if the token exists in the database
 var store_tk = []
@@ -470,7 +491,9 @@ for(a=0;a<data.length;a++){
 }
 
 let result =[]
+
 app.get("/api/courses/keywordmatch",(req,res)=>{
+result =[];
 var match = removeMultiples(store);
 var userInput= req.query.Input;
 var user_final = userInput.toUpperCase();

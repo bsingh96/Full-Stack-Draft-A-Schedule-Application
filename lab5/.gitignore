@@ -50,4 +50,5 @@ database.json
 users_database.json
 user_tokens.json
 
-node_modules
+
+string-similarity

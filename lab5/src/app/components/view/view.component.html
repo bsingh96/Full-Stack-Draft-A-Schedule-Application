@@ -1,0 +1,74 @@
+
+<mat-toolbar>
+    <a mat-button routerLink ='/homepage' routerLinkActive = "active" class="homepage">Home</a>
+   
+  </mat-toolbar>
+  
+<div class="container">
+    <br>
+    <h1>View Schedules</h1>
+    <br>
+    <br>
+    <label class="label22"for= "Schedulenaming">Schedule:</label>
+    <select class="names1" name="courseComponent" id="Schedulenaming"></select>
+    <br>
+    <button  mat-button class="view" type="button" (click)="displaySchedule()">View Schedule</button>
+    <button mat-button class ="delete" type="button" (click)="deleteSchedule()">Delete Schedule</button>
+   <br>
+   <br>
+  
+</div>
+<div *ngFor="let course of store" class ="newdiv12"> 
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+        <mat-expansion-panel-title>
+        <h1>{{ course.subject }} {{ course.catalog_nbr }} </h1>
+        </mat-expansion-panel-title>
+    <mat-expansion-panel-description>
+          <h2>   {{   course.className }} </h2>
+    </mat-expansion-panel-description>
+    
+        </mat-expansion-panel-header>
+       
+        <p>Course Description: {{ course.catalog_description }}</p> 
+        <mat-action-row>
+            
+        
+        <br>
+        <br>
+        
+        <table>
+            <tr>
+               
+                <th>Component</th>
+                <th>Class Number</th>
+                <th>Days</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Campus</th>
+                <th>Instructor</th>
+                <th>Status</th>
+
+            </tr>
+            <tr>
+                
+                <td >{{ course.course_info[0].ssr_component }}</td>
+                <td>{{ course.course_info[0].class_nbr }}</td>
+                <td>{{ course.course_info[0].days }}</td>
+                <td>{{ course.course_info[0].start_time }}</td>
+                <td>{{ course.course_info[0].end_time }}</td>
+                <td>{{ course.course_info[0].campus }}</td>
+                <td>{{ course.course_info[0].instructors }}</td>
+                <td>{{ course.course_info[0].enrl_stat }}</td>
+                
+            </tr>
+            
+        </table> 
+        
+       
+        </mat-action-row>
+    
+        </mat-expansion-panel>   
+        
+        </div>
+<router-outlet></router-outlet>
