@@ -22,6 +22,24 @@
       "review": "this course was sooooo good bro",
       "visibility": "public",
       "time": "Thu Dec 03 2020 22:32:42 GMT-0500 (Eastern Standard Time)"
+    },
+    {
+      "User": "Ayyan",
+      "subject": "ACTURSCI",
+      "code": "1021B",
+      "name": "INTRO TO FINANCIAL SECURE SYS",
+      "review": "owksnsnjs",
+      "visibility": "public",
+      "time": "Fri Dec 04 2020 14:00:10 GMT-0500 (Eastern Standard Time)"
+    },
+    {
+      "User": "Ayyan",
+      "subject": "ARABIC",
+      "code": 1030,
+      "name": "ARABIC FOR BEGINNERS",
+      "review": "this course was sooooo good bro",
+      "visibility": "public",
+      "time": "Fri Dec 04 2020 14:47:27 GMT-0500 (Eastern Standard Time)"
     }
   ]
 }

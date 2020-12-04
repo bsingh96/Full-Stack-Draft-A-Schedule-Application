@@ -18,57 +18,78 @@
    <br>
   
 </div>
-<div *ngFor="let course of store" class ="newdiv12"> 
+<div  class ="newdiv12"> 
+    <mat-accordion>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
         <mat-expansion-panel-title>
-        <h1>{{ course.subject }} {{ course.catalog_nbr }} </h1>
+        <h1>{{schedulename}}</h1>
         </mat-expansion-panel-title>
-    <mat-expansion-panel-description>
-          <h2>   {{   course.className }} </h2>
-    </mat-expansion-panel-description>
-    
+        
         </mat-expansion-panel-header>
-       
-        <p>Course Description: {{ course.catalog_description }}</p> 
+        <p>Schedule Description: {{description}}</p> 
         <mat-action-row>
-            
-        
-        <br>
-        <br>
-        
-        <table>
-            <tr>
-               
-                <th>Component</th>
-                <th>Class Number</th>
-                <th>Days</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Campus</th>
-                <th>Instructor</th>
-                <th>Status</th>
-
-            </tr>
-            <tr>
-                
-                <td >{{ course.course_info[0].ssr_component }}</td>
-                <td>{{ course.course_info[0].class_nbr }}</td>
-                <td>{{ course.course_info[0].days }}</td>
-                <td>{{ course.course_info[0].start_time }}</td>
-                <td>{{ course.course_info[0].end_time }}</td>
-                <td>{{ course.course_info[0].campus }}</td>
-                <td>{{ course.course_info[0].instructors }}</td>
-                <td>{{ course.course_info[0].enrl_stat }}</td>
-                
-            </tr>
-            
-        </table> 
-        
        
+              
         </mat-action-row>
     
-        </mat-expansion-panel>   
+        </mat-expansion-panel>
+        <div *ngFor="let course of store">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+            <mat-expansion-panel-title>
+            <h1>{{ course[0].subject }} {{ course[0].catalog_nbr }} </h1>
+            
+            </mat-expansion-panel-title>
+        <mat-expansion-panel-description>
+            
+              <h2>   {{   course[0].className }}  <button mat-button (click)="remove(course[0].subject,course[0].catalog_nbr,course[0].className)" > Remove</button></h2>
+              
+             
+        </mat-expansion-panel-description>
         
+            </mat-expansion-panel-header>
+           
+            <p>Course Description: {{ course[0].catalog_description }}</p> 
+            <mat-action-row>
+                
+            
+            <br>
+            <br>
+            
+            <table>
+                <tr>
+                   
+                    <th>Component</th>
+                    <th>Class Number</th>
+                    <th>Days</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Campus</th>
+                    <th>Instructor</th>
+                    <th>Status</th>
+    
+                </tr>
+                <tr>
+                    
+                    <td >{{ course[0].course_info[0].ssr_component }}</td>
+                    <td>{{ course[0].course_info[0].class_nbr }}</td>
+                    <td>{{ course[0].course_info[0].days }}</td>
+                    <td>{{ course[0].course_info[0].start_time }}</td>
+                    <td>{{ course[0].course_info[0].end_time }}</td>
+                    <td>{{ course[0].course_info[0].campus }}</td>
+                    <td>{{ course[0].course_info[0].instructors }}</td>
+                    <td>{{ course[0].course_info[0].enrl_stat }}</td>
+                    
+                </tr>
+                
+            </table> 
+            
+           
+            </mat-action-row>
+        
+            </mat-expansion-panel> 
+        </div >
+        </ mat-accordion>
         </div>
 <router-outlet></router-outlet>

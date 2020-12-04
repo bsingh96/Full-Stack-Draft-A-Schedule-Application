@@ -117,3 +117,14 @@ table{
         font-weight: normal;
         font-size: 13px;
     }
+
+    h2{
+        margin-left: 5px;
+        
+    }
+
+    p{
+        margin-left: 5px;
+        float: left;
+        font-weight: bolder;
+    }

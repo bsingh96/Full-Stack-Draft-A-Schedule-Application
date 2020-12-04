@@ -28,6 +28,7 @@ import {HashLocationStrategy , LocationStrategy} from '@angular/common';
 import { ViewComponent } from './components/view/view.component'
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { DmcaComponent } from './components/dmca/dmca.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     CreateComponent,
     AddComponent,
     DialogComponent,
-    ViewComponent
+    ViewComponent,
+    DmcaComponent
     
   ],
   imports: [

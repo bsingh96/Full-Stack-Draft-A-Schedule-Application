@@ -225,13 +225,70 @@ app.get('/api/courses/catalog_nbr',(req,res) =>{
     res.send(catalog_arr);
 });
 
-// delete a specific course
+// delete a specific schedule
+/*
 app.delete('/api/schedule/savedCourse/delete',(req,res)=>{
     schedule = req.query.Schedulenaming;
     db.get('schedule').remove({scheduleName:schedule}).write()
     res.send({
     alert: "sucessfully deleted."
 })
+})*/
+
+// method to delete a course under any schedule
+app.put('/api/schedule/delete/course' , (req,res)=>{
+    // input sanitization for the saving a schedule with course information 
+     
+      schedulename = req.body.Schedulenaming;
+      Subject = req.body.course_subject;
+      code1 = req.body.button_id;
+      coursename = req.body.name;
+      array2 = db.get('schedule').map('scheduleName').value();
+      console.log(array2.length);
+      console.log(schedulename);
+      for(a=0;a<array2.length;a++){
+          if(array2[a]==schedulename){
+  
+          db.get('schedule['+ a+'].coursesInformation').remove({courseSubject:Subject,courseCode:code1,courseName:coursename}).write();
+          
+          return res.send({// good
+              alert : "Sucessfully deleted."
+          })
+          }
+  
+  }
+  res.send({ // bad request
+      alert : "Can't be removed."
+  })
+  //res.send("gotthis:"+code);
+  })
+// deltining a specific course in schedule
+var x = []
+app.delete('/api/schedule/removecourse',(req,res)=>{
+subject = req.body.Subject;
+code = req.body.Code
+classname = req.body.ClassName;
+schedule = req.body.Schedule;
+ x = db.get('schedule').value()
+console.log(x.length)
+//console.log(x)
+var index;
+
+for(i=0;i<x.length; i++){
+    if(x[i].scheduleName == schedule){
+        index = i;
+        console.log(index)
+
+}
+ c= db.get('schedules[' + 0 + '].coursesInformation').find({ courseSubject: subject, courseCode: code, courseName: classname }).value();
+ console.log(c)
+}
+
+//db.get('schedule').find({courseName:classname}).remove().write()
+    //res.send({
+   // alert: "sucessfully deleted."
+//})
+
 })
 
 // delete all schedules
@@ -575,6 +632,8 @@ app.put('/api/courses/addreview',(req,res)=>{
 
     res.send({message:"successfully added"});
 })
+
+
 
 // get course reviews
 

@@ -12,7 +12,7 @@ export class ViewComponent implements OnInit {
   mainUrl= 'http://www.localhost:3000'
 
   show!: any[];
-  
+   x !: any[];
   schedulename !: String;
   description !: String;
 
@@ -52,28 +52,8 @@ dialogref.afterClosed().subscribe(result =>{
 })
 
 }
-/*
-  deleteSchedule() {
-    var schedule = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
-    var y = schedule.split('-')[0]
-    if(schedule == ""){// if dropdown menu is empty, alert user 
-     alert("There are no schedules available to delete.");
-     return;
-   }
-    var link = "/api/schedule/savedCourse/delete?"+"Schedulenaming="+y;
-    //delete request to delete the specific schedule from the database 
-    this.http.delete<any>(this.mainUrl + link).subscribe(data =>{
-     if(data.alert == "sucessfully deleted."){
-     alert("This schedule was sucesfully deleted. ");
-     window.location.reload();
-   }else{
-   alert("This schedule could not be deleted. Try again.")
-   }
-   
-    })
-     
-     } */
 
+  // automatically load all 
   ngOnInit(): void {
     var user ={
       Name:localStorage.getItem("Name")
@@ -96,7 +76,7 @@ dialogref.afterClosed().subscribe(result =>{
       }
     })
   }
-
+  // function to display the schedule into the expansion panel
   displaySchedule(){
     var schedule = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
     var y = schedule.split('-')[0]
@@ -111,25 +91,47 @@ dialogref.afterClosed().subscribe(result =>{
       //console.log(this.schedulename)
       this.description =data[0].Description;
       //console.log(data[0].coursesInformation.length)
-      this.store = data;
-      console.log(this.store)
+      //this.store = data;
+      //console.log(this.store)
+      this.x =[]
       for(let i=0;i<data[0].coursesInformation.length;i++){
-      
-     console.log(data[0].coursesInformation[i].courseSubject)
+    
+     //console.log(data[0].coursesInformation[i].courseSubject)
         this.http.get<any>(this.mainUrl + "/api/courses?"+ "course=" + data[0].coursesInformation[i].courseSubject +"&courseNum=" + data[0].coursesInformation[i].courseCode+ "&courseComponent=all_components" ).subscribe((data3: any) => {
           
          //this.store.push(data);
          //this.store = data;
-          this.store=data3  ;
-          console.log(this.store)
+          this.x.push(data3)  ;
+          //console.log(this.x)
+          //console.log(this.store)
         })
 
         //console.log(this.store)
       }
      
-      
+      this.store = this.x
+      console.log(this.store)
      
     })
+  }
+  // function to remove a course from schedule
+  remove(course_subject: String,code: String, name: String){
+    var schedule = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
+    var y = schedule.split('-')[0]
+    const pass_info = {
+      Schedulenaming: y,
+      course_subject : course_subject,
+      button_id : code,
+      name : name
+    }
+     this.http.put<any>(this.mainUrl+ '/api/schedule/delete/course',pass_info ).subscribe(data =>{
+       if(data.alert == "Sucessfully deleted." ){
+         alert("Course Removed");
+         window.location.reload;
+       }else{
+        alert("Unable to remove course");
+       }
+     })
   }
 
 }
