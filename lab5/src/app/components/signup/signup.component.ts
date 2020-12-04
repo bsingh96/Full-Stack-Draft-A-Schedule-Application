@@ -54,11 +54,11 @@ export class SignupComponent implements OnInit {
   })
 
   }
-  
+  // send credentials for user to the backend 
   sendCredentials(){
   // register user
 
- 
+  const regex = /^[^<>:/?#@!&;]*$/;
   const user = {
     name: this.name,
     email: this.email,
@@ -66,8 +66,13 @@ export class SignupComponent implements OnInit {
     role: "user",
     status: "inactive"
   }
+
+  
   //console.log(user.password)
 
+  if(!this.name.match(regex)){
+    this.flashMessages.show("Invalid input for name ! ", {cssClass:'error', timeout:'5000'});
+  }
   if(this.password2 != user.password){
     this.flashMessages.show("Passwords are not a match !", {cssClass:'error', timeout:'5000'});
   }
@@ -83,7 +88,7 @@ export class SignupComponent implements OnInit {
     //return false;
   }
   // register user
-  if(this.password2 == user.password && this.verifyService.validateSignup(user)&& this.verifyService.validateEmail(user.email)){
+  if(this.name.match(regex) && this.password2 == user.password && this.verifyService.validateSignup(user)&& this.verifyService.validateEmail(user.email)){
   let headers = new HttpHeaders();
   headers.append('Content-type','application/json');
   this.http.post<any>(this.url+'api/public/register', user, {headers:headers}).subscribe(data=>{

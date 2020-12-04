@@ -22,6 +22,8 @@ User !: String;
     var x =localStorage.getItem('Name');
     alert(x);
   }
+
+  // logout empties the localstorage variables and redirects to homepage
   logout(){
     localStorage.removeItem("RefreshToken");
     localStorage.removeItem("AccessToken");

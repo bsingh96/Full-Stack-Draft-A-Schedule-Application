@@ -23,7 +23,7 @@ export class ViewComponent implements OnInit {
     this.store = []
   }
   store : any[];
-
+// function to delete a schedule and alert user to confirm the changes 
 deleteSchedule(){
 let dialogref = this.dialog.open(DialogComponent)
 dialogref.afterClosed().subscribe(result =>{
@@ -53,7 +53,7 @@ dialogref.afterClosed().subscribe(result =>{
 
 }
 
-  // automatically load all 
+  // automatically load all schedules belonging to a user
   ngOnInit(): void {
     var user ={
       Name:localStorage.getItem("Name")

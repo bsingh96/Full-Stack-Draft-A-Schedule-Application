@@ -25,7 +25,7 @@ export class ManageUsersComponent implements OnInit {
       }
     })
   }
-
+  // function to deactivate a user
   deactivate(){
     var email_deactivate = (<HTMLInputElement>document.getElementById("users")).value;
     const user = {

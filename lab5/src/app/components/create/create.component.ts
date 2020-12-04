@@ -37,6 +37,7 @@ export class CreateComponent implements OnInit {
       }
     })
   }
+   // function to make a schedule public
   work(){
       var x = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
       var y = x.split('-')[0]
@@ -53,6 +54,7 @@ export class CreateComponent implements OnInit {
       
     
   }
+  // function to make a schedule private
   work2(){
     var x = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;
       var y = x.split('-')[0]
@@ -66,6 +68,9 @@ export class CreateComponent implements OnInit {
         window.location.reload();
       })
   }
+
+  // function to add schedule and ensure limit constraints are met
+
   addSchedule(){
   
   var user = localStorage.getItem("Name");
