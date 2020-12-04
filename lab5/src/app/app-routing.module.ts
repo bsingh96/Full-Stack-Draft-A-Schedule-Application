@@ -17,6 +17,7 @@ import { CreateComponent } from './components/create/create.component';
 import {AddComponent} from './components/add/add.component'
 import {ViewComponent} from './components/view/view.component'
 import {DialogComponent} from './components/dialog/dialog.component'
+import {DmcaComponent} from './components/dmca/dmca.component'
 
 const routes : Routes = [
   {path: '', redirectTo:'viewpage', pathMatch:'full'},
@@ -26,6 +27,7 @@ const routes : Routes = [
   {path:'about', component:AboutComponent},
   {path:'browse', component:SearchComponent},
   {path: 'reviews', component:ReviewsComponent},
+  {path: 'policy', component:DmcaComponent},
   {path: 'view', component:ViewComponent,canActivate:[UserGuard]},
   {path: 'add', component:AddComponent,canActivate:[UserGuard]},
  
