@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-
+import { MatDialog } from '@angular/material/dialog';
+import {DialogComponent} from '.././dialog/dialog.component'
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -11,7 +12,8 @@ export class AddComponent implements OnInit {
    Username = localStorage.getItem("Name");
    view: boolean = false;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dialog: MatDialog
   ) { }
   
   courses!: any[];
@@ -19,10 +21,52 @@ export class AddComponent implements OnInit {
   expand(){
     this.view = true;
   }
+  // functionality to add a review and confirm if the user would like to add the review or cancel
   addReview(course_subject:String,button_id:String,coursename:String){
+    const regex = /^[^<>:/?#@&;]*$/;
+    if(this.review == undefined || this.review == null ){
+      alert("Input a review !")
+      }else if(!this.review.match(regex)){
+      alert("Invalid Input");
+      }else{
+   
+  let dialogref = this.dialog.open(DialogComponent)
+dialogref.afterClosed().subscribe(result =>{
+  console.log(`Dialog result: ${result}`);
+
+  if(result == "true"){
+    var x = localStorage.getItem("Name");
+    var time = Date();
+    const info ={
+      Subject : course_subject,
+      Code : button_id,
+      Name: coursename,
+      Username: x,
+      Review: this.review,
+      Visibility: "public",
+      Time: time
+    }
+    this.http.put<any>(this.mainUrl + '/api/courses/addreview', info).subscribe(data =>{
+    if(data.message=="successfully added"){
+    alert("review added!");
+    window.location.reload();
+    }
+    })
+
+  }})
+}
+  }
+  /*
   var time= Date();
   //console.log(time);
-  var x = localStorage.getItem("Name")
+  let dialogref = this.dialog.open(DialogComponent)
+dialogref.afterClosed().subscribe(result =>{
+  console.log(`Dialog result: ${result}`);
+
+  if(result == "true"){
+
+  }})
+  var x = localStorage.getItem("Name");
   if(this.review == undefined || this.review == null ){
   alert("Input a review !")
   }else{
@@ -40,11 +84,11 @@ export class AddComponent implements OnInit {
   alert("review added!")
   }
   })
-}
-
+}*/
+      
 
  //alert(course_subject + " "+ button_id + " " + coursename + " " + x )
-  }
+
   addCourse(course_subject:String,button_id:String,coursename:String){
     var buttonid= button_id;
     var schedule = (<HTMLInputElement>document.getElementById("Schedulenaming")).value;

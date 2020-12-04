@@ -102,8 +102,8 @@
            
             <mat-action-row>
             
-                    <input class="input" placeholder="Enter a course review here.........." name="review" [(ngModel)]="review">
-                    <button (click)="addReview(course.subject , course.catalog_nbr,course.className)">Add Review</button>
+            <input class="input" placeholder="Enter a course review here.........." name="review" [(ngModel)]="review" autocomplete="off">
+            <button (click)="addReview(course.subject , course.catalog_nbr,course.className)">Add Review</button>
             
             </mat-action-row>
         
